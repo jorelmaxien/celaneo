@@ -1,0 +1,201 @@
+{% extends "RingCoinAppBundle:Backoffice:default_backoffice.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+{% block title %}Dashboard{% endblock %}
+
+{% block nav_item %}
+    <li class="nav-item">
+        <a class="nav-link waves-effect waves-light" href="{{ path('newsletter') }}">NewsLetter</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link waves-effect waves-light" href="{{ path('backoffice_admin_credite') }}">Crediter</a>
+    </li>
+{% endblock %}
+
+{% block stylesheets %}
+    {% stylesheets filter='cssrewrite'
+    'bundles/ringcoinapp/css/bootstrap-material-datetimepicker.css'
+    %}
+
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+
+    {% endstylesheets %}
+{% endblock %}
+
+{% block content %}
+
+    <!--First row-->
+    <div class="row animated fadeInRight px-lg-5 mb-5" style="margin-top: 7rem">
+        <!--First column-->
+        <div class="col-md-3 col-sm-6 mb-3">
+            <!--Card-->
+            <div class="card card-cascade cascading-admin-card">
+
+                <!--Card Data-->
+                <div class="admin-up">
+                    <i class="fa fa-user blue darken-3"></i>
+                    <div class="data">
+                        <p>Nombre d'utilisateurs</p>
+                        <h5>{{ data.tt_users }}</h5>
+                    </div>
+                </div>
+                <!--/.Card Data-->
+
+                <!--Card content-->
+                <div class="card-block">
+                    <div class="col-md-12">
+                        <div class="progress">
+                            <div class="progress-bar blue darken-3" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+                <!--/.Card content-->
+
+            </div>
+            <!--/.Card-->
+        </div>
+        <!--/First column-->
+
+
+        <!--Fourt column-->
+        <div class="col-md-3 mb-3">
+            <!--Card-->
+            <div class="card card-cascade cascading-admin-card">
+
+                <!--Card Data-->
+                <div class="admin-up">
+                    <span class="fa orange darken-4">RC</span>
+                    <div class="data">
+                        <p>Pièces RC vendues</p>
+                        <h5>{{ data.piecesAchetes }}</h5>
+                    </div>
+                </div>
+                <!--/.Card Data-->
+
+                <!--Card content-->
+                <div class="card-block">
+                    <div class="col-md-12">
+                        <div class="progress">
+                            <div class="progress-bar orange darken-4" role="progressbar" style="width: 100%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+                <!--/.Card content-->
+
+            </div>
+            <!--/.Card-->
+        </div>
+        <!--/Fourt column-->
+
+
+        <!--Second column-->
+        <div class="col-md-3 col-sm-6 mb-3">
+            <!--Card-->
+            <div class="card card-cascade cascading-admin-card">
+
+                <!--Card Data-->
+                <div class="admin-up">
+                    <i class="fa fa-exchange purple"></i>
+                    <div class="data">
+                        <p>Total des transactions</p>
+                        <h5>{{ data.tt_transactions }}</h5>
+                    </div>
+                </div>
+                <!--/.Card Data-->
+
+                <!--Card content-->
+                <div class="card-block">
+                    <div class="col-md-12">
+                        <div class="progress">
+                            <div class="progress-bar purple" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+                <!--/.Card content-->
+
+            </div>
+            <!--/.Card-->
+        </div>
+        <!--/Second column-->
+
+        <!--Third column-->
+        <div class="col-md-3 mb-3">
+            <!--Card-->
+            <div class="card card-cascade cascading-admin-card">
+
+                <!--Card Data-->
+                <div class="admin-up">
+                    <span class="fa deep-purple darken-4">+RC</span>
+                    <div class="data">
+                        <p>Total RC bonus</p>
+                        <h5>{{ data.piecesBonus }}</h5>
+                    </div>
+                </div>
+                <!--/.Card Data-->
+
+                <!--Card content-->
+                <div class="card-block">
+                    <div class="col-md-12">
+                        <div class="progress">
+                            <div class="progress-bar deep-purple darken-4" role="progressbar" style="width: 100%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+                <!--/.Card content-->
+
+            </div>
+            <!--/.Card-->
+        </div>
+        <!--/Third column-->
+
+
+
+    </div>
+    <!--/First row-->
+
+    <div class="row px-lg-5">
+
+        <div class="col-md-12 mb-sm-5">
+            <div class="card" style="min-height: 23rem">
+                <div class="card-block py-3 px-4 px-md-5">
+                    <div class="row mb-4">
+                        <div class="col-md-9 col-sm-12 text-center">
+                            <h5 class="card-title mt-md-4">STATISTIQUES DES INSCRIPTIONS</h5>
+                        </div>
+                        <div class="col-md-3 col-sm-12">
+                            <ul class="list-group">
+                                <li class="list-group-item justify-content-between">
+                                    Emails actives
+                                    <span class="badge badge-primary badge-pill">{{ data.tt_users_actifs }}</span>
+                                </li>
+                                <li class="list-group-item justify-content-between">
+                                    Emails non actives
+                                    <span class="badge badge-primary badge-pill">{{ data.tt_users_non_actifs }}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <canvas id="usr-gph-linechart" height="110"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(document).ready(function () {
+
+            stat("{{ path('backoffice_admin_homepage') }}");
+
+        });
+
+    </script>
+{% endblock %}
+

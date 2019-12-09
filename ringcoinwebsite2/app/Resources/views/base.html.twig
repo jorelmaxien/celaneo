@@ -1,0 +1,169 @@
+
+{% trans_default_domain 'RingCoinAppBundle' %}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html" class="{% block class %}full-height{% endblock %}">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="description" content="{{ 'accueil.section1.p1'|trans }} {{ 'accueil.section1.p2'|trans }} {{ 'accueil.section1.p3'|trans }}">
+        <meta name="keywords" content="StartupSolution,Cryptomonnaie,ICO,ringcoin,ringcorp,Afrique,Financement,ringexchange,ringcard,ringmarket,ringcorp">
+        <meta name="author" content="RingCorp">
+        <meta name="robots" content="all" />
+        <meta property="og:locale" content="en">
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="The next generation of payment system  | RingCorp">
+        <meta property="og:description" content="{{ 'accueil.section1.p1'|trans }} {{ 'accueil.section1.p2'|trans }} ">
+        <meta property="og:url" content="{{ absolute_url('/') }}">
+        <meta property="og:site_name" content="RingCorp">
+        <meta property="og:image" content="{{ absolute_url(asset('bundles/ringcoinapp/img/ringcoin.png')) }}">
+
+        <title>{% block title %}{% endblock %} | RingCorp</title>
+        {% stylesheets filter='cssrewrite'
+        'bundles/ringcoinapp/css/bootstrap.min.css'
+        'bundles/ringcoinapp/css/font-awesome.css'
+        'bundles/ringcoinapp/css/mdb.min.css'
+        'bundles/ringcoinapp/css/style.css'
+        %}
+
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+
+        {% endstylesheets %}
+
+        {% block style %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('bundles/ringcoinapp/img/ringcoin.png') }}" />
+    </head>
+
+    <body>
+
+    {% trans_default_domain 'RingCoinAppBundle' %}
+
+    {% block contactUs %}
+
+    <div class="wrap" >
+        <div class="content grey-text">
+            <h2 class="mb-5 text-center mt-1">{{ 'contactForm.title'|trans }}</h2>
+            <form method="post" action="{{ path('contact_us') }}">
+                <!--Body-->
+
+                    <div class="{% if app.user.id is defined %} hidden {% endif %} ">
+                        <div class="md-form mt-5">
+                            <i class="fa fa-user prefix"></i>
+                            <input type="text" id="ct-name" required name="nom" {% if app.user.id is defined %} value="{{ app.user.username }}" {% endif %} class="form-control">
+                            <label for="ct-name">{{ 'contactForm.nom'|trans }}</label>
+                        </div>
+                        <div class="md-form">
+                            <i class="fa fa-envelope prefix"></i>
+                            <input type="text" id="ct-email" required name="email" {% if app.user.id is defined %} value="{{ app.user.email }}" {% endif %} class="form-control">
+                            <label for="ct-email">{{ 'contactForm.email'|trans }}</label>
+                        </div>
+                    </div>
+
+
+
+                <div class="md-form">
+                    <i class="fa fa-tag prefix"></i>
+                    <input type="text" required id="ct-object" name="objet" class="form-control">
+                    <label for="ct-object">{{ 'contactForm.objet'|trans }}</label>
+                </div>
+                <div class="md-form">
+                    <i class="fa fa-pencil prefix"></i>
+                    <textarea type="text" required id="txtarea" name="sujet" class="md-textarea mb-0" maxlength="300"></textarea>
+                    <label for="ctxtarea">{{ 'contactForm.sujet'|trans }}</label>
+                </div>
+
+                <div class="text-center mb-3">
+                    <button type="submit" class="btn orange-gradient waves-effect btn-block btn-rounded z-depth-1a">
+                        {{ 'contactForm.send'|trans }} <i class="fa fa-send"></i>
+                    </button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+    <div class="body">
+        <a class="center-circle fab orange" href="#"><i class="fa fa-envelope"></i> </a>
+    </div>
+    {% endblock %}
+
+
+        {% block body %}{% endblock %}
+
+        {% javascripts  'bundles/ringcoinapp/js/jquery-3.1.1.min.js'
+        'bundles/ringcoinapp/js/popper.min.js'
+        'bundles/ringcoinapp/js/bootstrap.min.js'
+        'bundles/ringcoinapp/js/mdb.min.js'
+        'bundles/ringcoinapp/js/common.js'
+        %}
+        <script src="{{ asset_url }}"> </script>
+        {% endjavascripts %}
+
+
+        <script>
+            //Animation init
+            new WOW().init();
+
+            /*window.fbAsyncInit = function() {
+                FB.init({
+                    appId      : '{your-app-id}',
+                    cookie     : true,
+                    xfbml      : true,
+                    version    : '{latest-api-version}'
+                });
+                FB.AppEvents.logPageView();
+            };*/
+
+            $(document).ready(function () {
+
+                var urlprofile = null;
+
+                if("{{ app.request.attributes.get('_route') }}"==="fos_user_profile_show"){
+                    urlprofile="{{ absolute_url(path('paginate_transaction',{'page': '1'})) }}";
+                }
+
+                {% if app.user.id is defined %}
+
+                 setInterval(function () {
+                        checkpayment("{{ absolute_url(path('backoffice_deposit', {x:'BTC'})) }}", urlprofile, "BTC", "{{ asset('bundles/ringcoinapp/img/load.gif') }}");
+                        checkpayment("{{ absolute_url(path('backoffice_deposit', {x:'LTC'})) }}", urlprofile, "LTC", "{{ asset('bundles/ringcoinapp/img/load.gif') }}");
+                        checkpayment("{{ absolute_url(path('backoffice_deposit', {x:'ETH'})) }}", urlprofile, "ETH", "{{ asset('bundles/ringcoinapp/img/load.gif') }}");
+
+                    }, 900000);
+
+                {% endif %}
+
+
+                var route = "{{ app.request.attributes.get('_route') }}";
+
+                $(".locale").on('click', function(event) {
+                    event.preventDefault();
+                    var local = $(this).attr('locale');
+                    var  url;
+                    console.log(route);
+
+                    if(route!=='hwi_oauth_connect_registration'){
+                        if(local==='fr'){
+                            url = "{{ path(app.request.attributes.get('_route'), {_locale: 'fr', key: app.request.attributes.get('key'), page:app.request.attributes.get('page'), token:app.request.attributes.get('token'), email:app.request.attributes.get('email') }) }}";
+                        }else {
+                            url = "{{ path(app.request.attributes.get('_route'), {_locale: 'en', key: app.request.attributes.get('key'), page:app.request.attributes.get('page'), token:app.request.attributes.get('token'), email:app.request.attributes.get('email') }) }}";
+                        }
+                        window.setTimeout("location=('"+ url +"')");
+                    }
+
+                    //window.setTimeout("location=('"+ url +"')");
+                });
+            });
+
+           /* (function(d, s, id){
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {return;}
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));*/
+        </script>
+
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

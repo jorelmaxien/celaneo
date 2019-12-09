@@ -1,0 +1,18 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: ringcorpqdring.mysql.db
+    database_port: null
+    database_name: ringcorpqdring
+    database_user: ringcorpqdring
+    database_password: qDR3MfZ2cpa8VbiY6534
+    mailer_transport: smtp
+    mailer_host: ssl0.ovh.net
+    mailer_user: null
+    mailer_password: null
+    secret: be11f7a8641ce0026bb50de0a4f01e9dabc95388
+    cle_api_coinbase: H7k7eo1jcgYuaioT
+    cle_secrete_coinbase: INqxYafcbVTJB6oiw7MMEM9ngDTV5sis
+    google_client_id: 1050829113134-l0iujqsj0vjtcj9efal98kjfl5e874p7.apps.googleusercontent.com
+    google_client_secret: HREDcT2epb20Yt1EHdfMR_-N
+    facebook_client_id: 156324314966237
+    facebook_client_secret: 6cebd8bd8f21ca722a63a531bbb15e9b

@@ -1,0 +1,96 @@
+{% extends "RingCoinAppBundle:Backoffice:default_backoffice.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+{% block title %}CrediteAccount{% endblock %}
+
+{% block nav_item %}
+    <li class="nav-item">
+        <a class="nav-link waves-effect waves-light" href="{{ path('newsletter') }}">NewsLetter</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link waves-effect waves-light" href="{{ path('backoffice_admin_credite') }}">Crediter</a>
+    </li>
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="row mb-5" style="margin-top: 11rem">
+        <div class="col-sm-0 col-md-3"></div>
+        <div class="col-sm-12 col-md-6">
+            <section class="form-elegant">
+                <div class="card">
+                    <div class="card-body">
+
+                        <form method="post" action="{{ path('backoffice_admin_credite') }}">
+                            <!--Header-->
+                            <div class="text-center">
+                                <h3 class="dark-grey-text mb-5"><strong>Creditation du compte</strong></h3>
+                                <p>Pour crediter un achat par paiement mobile, dans le champ <b>"type de paiement"</b> il faut mettre <b>"MoMo"</b> pour un paiement par
+                                    Mtn Mobile Money ou <b>"OM"</b> pour un paiement par Orange Money
+
+                                <p>
+                                    Pour un achat par une cryptomonnaie dans le champ <b>"Adresse de depot"</b> il faut mettre l'adresse sur lequel on
+                                    a fait le depot;  pour le champ <b>"Type adresse"</b> c'est soit <b>ETH ou BTC ou LTC</b> et <b>"ID transaction"</b>
+                                    il faut mettre le hash code
+                                </p>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="md-form">
+                                        <input required type="text" id="ct-object" name="username" class="form-control">
+                                        <label for="ct-object">Username</label>
+                                    </div>
+                                </div>
+                                <div class="col-6 mt-3 pull-right pl-5">
+                                    <select name="typeCreditation" id="typeCreditation" class="custom-select">
+                                        <option value="crypto">Depot en cryptomonnaie</option>
+                                        <option value="mobile">Paiement mobile</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="md-form">
+                                <input required type="text" id="ct-object" name="adrTransaction" class="form-control">
+                                <label for="ct-object" id="1">Adresse de depot</label>
+                            </div>
+
+                            <div class="md-form">
+                                <input required type="text" id="ct-object" name="typeAdr" class="form-control">
+                                <label for="ct-object" id="2">Type adresse</label>
+                            </div>
+
+                            <div class="md-form">
+                                <input required type="text" id="ct-object" name="motif" class="form-control">
+                                <label for="ct-object" id="3">ID transaction</label>
+                            </div>
+
+                            <div class="md-form">
+                                <input required type="text" id="ct-object" name="somme" class="form-control">
+                                <label for="ct-object" id="4">Montant en dollar</label>
+                            </div>
+
+                            <div class="text-center mb-3">
+                                <button type="submit" class="btn btn-orange waves-effect btn-rounded z-depth-1a">
+                                    Crediter
+                                </button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <div class="col-sm-0 col-md-3"></div>
+    </div>
+
+
+{% endblock %}
+
+
+

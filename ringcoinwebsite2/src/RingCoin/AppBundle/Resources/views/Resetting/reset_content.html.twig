@@ -1,0 +1,19 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{{ form_start(form, { 'action': path('fos_user_resetting_reset', {'token': token}), 'attr': { 'class': 'fos_user_resetting_reset mt-2 mx-4' } }) }}
+
+    <div class="md-form mt-4">
+        {{ form_widget(form.plainPassword.first, { 'attr' : { 'class' : 'form-control', id:'mdp1'} }) }}
+        {{ form_label(form.plainPassword.first, 'form.new_password'|trans, {'label_attr': {'for': 'mdp1'}}) }}
+    </div>
+
+    <div class="md-form mt-4">
+        {{ form_widget(form.plainPassword.second, { 'attr' : { 'class' : 'form-control', id:'mdp2'} }) }}
+        {{ form_label(form.plainPassword.second, 'form.new_password_confirmation'|trans, {'label_attr': {'for': 'mdp2'}}) }}
+    </div>
+
+    <div class="text-center mb-3">
+        <button type="submit" id="btn-sing-up" class="btn blue-gradient btn-block btn-rounded z-depth-1a">{{ 'resetting.reset.submit'|trans }}</button>
+    </div>
+
+{{ form_end(form) }}

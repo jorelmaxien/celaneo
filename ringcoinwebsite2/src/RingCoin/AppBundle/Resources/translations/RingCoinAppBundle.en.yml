@@ -1,0 +1,284 @@
+accueil:
+    whitepaper: 'White paper'
+    faq: 'F.A.Q'
+    signin: 'Connexion'
+    calDev: "Calendar of developpement"
+    signup: 'Inscription'
+    dateVente: 'Mon 01 Jan 2018 00:00:00 GMT+0100'
+    otherQuestion: 'Other questions ?'
+    french: 'French'
+    english: 'English'
+    logomsg: 'RingCoin est la prochaine cryptomonnaie mondiale décentralisée basée sur la structure de l’Ethereum.'
+    presale: 'PRESALE'
+    totalSupply: 'TOTAL SUPPLY'
+    tokenUpdate: 'Updates automatically every 60 sec'
+    hardcarp: 'Hardcap %montant%'
+    tokendistribution: 'Estimated time before passing from $0.08 to $0.4'
+    days: 'Day'
+    hours: 'Hours'
+    minutes: 'Minutes'
+    seconds: 'Seconds'
+    btnrcom: 'get 5 free ringcoins'
+    section1:
+        title: 'What is the RingCoin?'
+        p1: "Ringcoin is the next generation of multi-platform mobile payment for Africa. It is a token of
+             the type ERC20 with advantages inherent to the cryptocurrency namely decentralized;
+             anonymous, allowing users privately control their finances."
+
+        p2: "Ringcoin is also very fast because transactions are done in less than 30 seconds as compared
+             to Bitcoin blockchain which takes more than 30 minutes."
+
+        p3: "Ringcoin is a revolution with rare and exceptional financial potentials because it opens to a
+             market already, world leader of the mobile payment with the African continent."
+
+        p4: ""
+
+    section2:
+        title: "RingExchange"
+
+        p1: "It is now an absolute necessity in Africa because it is a universal portfolio and a platform for exchanging crypto-currencies and fiduciary currencies."
+
+        p2: "The key to this lies in multi-platform mobile payments that will greatly facilitate the continent's access to cryptocurrency, as Africa's global leader in mobile payment is
+         the continent that is likely to best accommodate cryptocurrency."
+
+    section3:
+        title: "RingMarket"
+
+        p1: "Ringmarket is our e-commerce platform; it operates on the Market Place principle with
+             discounts for consumers using the Ringcoin. Ringmarket helps reduce consumer&#39;s purchasing
+             power. It equally wants to seize the opportunity offered by blockchain technology to offer
+             consumers of any product the opportunity to buy goods and services at unbeatable prices."
+
+
+        p2:  "Indeed, in a global context where one of the characteristics is the upward pressure on prices,
+              RINGMARKET on the blockchain will help pull prices down to allow consumers to retain
+              their purchasing power."
+
+
+    section4:
+        title: "Startup solution"
+
+        p1: "Start Up Solution is an African crowdfunding platform that has existed for several months. It
+             operates according to the principle of affiliation and today has more than 10,000 members.
+             Ringcoin will build on this community to gain more value."
+
+        p2: "How will the platform works?"
+
+        p3: "Once the Ringcoin is on the stock exchange, the platform Start Up Solution will know an
+             important update: the background surveys will now be done with Ringcoin which will allow
+             additional value for startupers: This, thanks to the climbing value of the Ringcoin."
+
+    section5:
+        title: "RingCard"
+
+        p1: ""
+
+        p2: "It allows to carry out the different transactions in the Ringcoin ecosystem: Ringexchange,
+             Ringmarket and Start Up Solution."
+
+        p3: ""
+
+        p4: "Evolution of price"
+
+    citation:
+        text: "Not so long ago, some experts argued that personal computers would never be adopted, and that tablets would only be used as expensive coffee trays.
+              So I think it may not be wise to dismiss virtual currencies."
+        auteur: "Christine Lagarde, IMF Managing Director"
+
+    section6:
+        title: "Frequently Asked Questions"
+
+        p1: "Here are some general questions and answers about Cryptocurrency."
+
+        menu1:
+          title: "1) What is ringcoin?"
+
+          p1: "Ringcoin is the next generation of multi-platform mobile payment for Africa. It is a token of
+               the type ERC20 with the advantages inherent to cryptocurrency namely decentralized;
+               anonymous, allowing users privately control their finances. Ringcoin is also very fast because
+               transactions are done in less than 30 seconds as compared to Bitcoin blockchain which takes
+               more than 30 minutes."
+
+          p2: "Ringcoin is a revolution with rare and exceptional financial potential because it opens to a
+               market already, world leader of the mobile payment with the African continent."
+
+          p3: "The African continent is more than 1.3 billion inhabitants and more than 150 million Money
+               Mobile accounts constantly growing. The potential of African mobile payment is known."
+
+        menu2:
+          title: "2) Why Ringexchange?"
+
+          p1: "Several thousand people in Africa are already using cryptocurrency, the demand is higher and
+               higher, but access is limited. This is because most of the platforms for trading and selling
+               crypto-currencies are not open to the African market."
+
+          p2: "Ringexchange will change the game and accelerate access to unrestricted cryptocurrency and
+               become the leading platform of the African market by Q4 2018 so this popularity will results
+               in a trading plan."
+
+        menu3:
+          title: "3) Double tokenisation"
+
+          p1: "In addition to 90 800 000 Ringcoins issued and listed on the stock exchange, 908 000 000
+               Ringtoken are simultaneously issued, with a fixed value compared to Ringcoin of an amount
+               equivalent to 10 Ringtoken for 1 Ringcoin. In addition, the Ringtoken are not listed on the
+               stock exchange and are held solely by the company Ring Corporation, which decides on its
+               issue according to the triggers for purchases of goods and services."
+
+        menu4:
+          title: "4) How to benefit from the Start up solution?"
+
+          p1: "Start Up Solution is an African crowdfunding platform that has existed for several months. It
+               operates according to the principle of affiliation and today has more than 10,000 members.
+               Ringcoin will build on this community to gain more value."
+
+          p2: "How will the platform work?"
+
+          p3: "Once the Ringcoin is on the stock exchange, the platform Start Up Solution will know an
+               important update: the background surveys will now be done with Ringcoin which will allow
+               additional value for startupers: This, thanks to the climbing value of the Ringcoin."
+
+        menu5:
+          title: "5) What is the benefit of the Ringcard?"
+
+          p1: "It allows to carry out the different transactions in the Ringcoin ecosystem ( Ringexchange,
+               Ringmarket and Start Up Solution) and around the world."
+
+          p2: ""
+
+          p3: ""
+
+    section7:
+        p1: "The RingCorps team is constantly working to revolutionize the cryptocurrency era by developing the following environments and services as quickly as possible:"
+
+        p2:
+          left: "Setting up the staff"
+          right: "Q2 2016"
+
+        p3:
+          left: "July 2017"
+          right: "Pre-launch of Startup Solution"
+
+        p4:
+          left: "Ringcoin development"
+          right: "Q2 2017"
+
+        p5:
+          left: "17 November 2017"
+          right: "Pre-sale registration"
+
+        p6:
+          left: "Sales start"
+          right: "25 November 2017"
+
+        p7:
+          left: "26 February 2018"
+          right: "launching"
+
+    section8:
+        title: "Our team"
+
+contactForm:
+    title: "Contact us"
+    nom: "Your name"
+    email: "Your email"
+    objet: "Object"
+    sujet: "Subject"
+    send: "Send"
+
+footer: "Powered by "
+
+loginForm:
+    forgetPassword: "Forgot your password?"
+    notMember: "Not registered?"
+    member: "Already registered?"
+    otherConnexion: "or sign up with:"
+    otherInscription: "or registration with:"
+
+resettingForm:
+    msg: "Please enter your email address to receive the password reset link."
+
+registerForm:
+    msgParrainage: "This registration is sponsored by"
+
+profileFormn :
+    debutant: 'Beginner'
+    intermediaire: "Intermediate"
+    expert: "Expert"
+
+backoffice:
+    monRingWallet: "My RingWallet"
+    ringCoinBuy: "RingCoin purchased"
+    ringBonus: "RingCoin bonus "
+    ringTotal: "Total RingCoin"
+    valeurUnitaire: "Unit value"
+    buy: "Buy"
+    nbreFilleul: "Number of referrals"
+    lienParrainage: "Referral link"
+    copier: "Copy"
+    totalPiece: "Total RingCoin coins"
+    bonus: "Bonus"
+    transactions: "Transactions"
+    motifRingBonus: "Thanks to the verification of your email address."
+    motifparrainage: "Thanks to the sponsorship"
+    achatRing: "Buy RingCoin"
+    idTransaction: "Transaction ID"
+    profil: "My profile"
+    infosConfidentiel: "Your information is confidential, encrypted and saved in your private profile."
+    nivoExp: "Level of experience in cryptocurrency"
+    couriel: "Your email"
+    soumettreModif: "Submit changes"
+    verifierEmail: "Verify your email address"
+    accueil: "Home"
+    emptyTransaction: "No transactions available"
+    genererLien: "Generate the link"
+    numTel: "Phone number"
+    mtnFcfa: "Amount in FCFA"
+    motifBuyRC: "Thanks to the purchase of RC coins"
+
+    msgFlash:
+          transactionPending: "your transaction is being processed"
+          emptyTransaction: "Vous aviez effectue aucuns depots, veuillez recommencer
+          la procedure d'achat une fois apres avoir effectue la transaction"
+          canceledTransaction: "%nbre% transaction(s) a(ont) ete annule(s)"
+          confirmedTransaction: "Votre achat a ete confirme"
+          validateEmail: "Please check your email address and receive a bonus of 5 RingCoin coins"
+          invalidReCaptcha: "Invalid reCaptcha"
+
+check-emailValidation:
+    msg: "An email has been sent to the email address %email%.
+     It contains an activation link that you will need to click to validate your email address.
+     If you do not receive any email, go back to your backoffice and try the procedure again"
+
+deposit:
+    backoffice: "Backoffice"
+    achatRing: "Buy RingCoin"
+    adrDepotBtc: "Make a bitcoin deposit on this address and the purchase will be done automatically"
+    adrDepotLtc: "Make a litcoin deposit on this address and the purchase will be done automatically"
+    adrDepotEth: "Make a ethereum deposit on this address and the purchase will be done automatically"
+    myRingCoin: "My Ringcoin"
+    ringDispo: "Ringcoin available"
+    valTotal: "Total value"
+    mtnDollar: "Amount in Dollar"
+    equivalentCrypto: "Equivalent en %crypto%"
+    valider: "Validate"
+    svt: "Next"
+    prec: "Previous"
+    msg: "Please complete this form after depositing on one of our accounts"
+    annuler: "Annuler"
+
+errorPage:
+    desole: "Sorry"
+    error: "RingCoin Error page"
+    notFound: "This page does not exist"
+    serverError: "An internal server error has occurred, please try again"
+
+email:
+    question: "You have questions? Contact us via Facebook or Twitter, or send an email to our support team."
+    cordialement: "Regards,"
+    equipe: "The team RingCorp."
+    salut: "Hi"
+    activerCompte: "Activate your account"
+    msgValidation: "To validate your email address, please click on the button below."
+    btnValider: "Validate your email address"
+    sujetValidation: "Validation of your email address"

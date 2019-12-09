@@ -1,0 +1,14 @@
+{% trans_default_domain 'RingCoinAppBundle' %}
+{% block subject %}
+{%- autoescape false -%}
+{{ 'email.sujetValidation'|trans }}
+{%- endautoescape -%}
+{% endblock %}
+
+{% block body_text %}
+
+{% endblock %}
+
+{% block body_html %}
+    {% include 'RingCoinAppBundle:Registration:email.html.twig' %}
+{% endblock %}

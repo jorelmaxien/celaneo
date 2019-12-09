@@ -1,0 +1,202 @@
+{% extends "RingCoinAppBundle:Backoffice:default_backoffice.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block title %}Achat{% endblock %}
+
+{% block link_header_backoffice %}{{ path('') }}{% endblock %}
+
+
+{% block content %}
+    <div class="row px-lg-5 mb-0" style="margin-top: 7rem">
+
+        <div class="col-md-8 dashboard-rs panel-h-md px-2 mx-0 mb-2 text-white mb-sm-2">
+            <div class="hm-black-strong">
+                <div class="mask flex-center">
+                    <div class="card px-0 mt-4">
+
+                        <div class="card-body">
+                            <h2 class="card-title h2-responsive mb-4">
+                                Achat Ringcoin
+                            </h2><br />
+
+                            <div class="row mb-4 mt-0">
+                                <div class="col-md-12 px-0">
+                                    <!--  Nav tabs  -->
+                                    <ul class="nav md-pills md-pills-warning flex-center inline" role="tablist">
+                                        <li class="nav-item col-12 col-md-4">
+                                            <a class="nav-link active" data-toggle="tab" href="#panel21" role="tab">Bitcoin</a>
+                                        </li>
+                                        <li class="nav-item col-12 col-md-4">
+                                            <a class="nav-link" data-toggle="tab" href="#panel22" role="tab">Ethereum</a>
+                                        </li>
+                                        <li class="nav-item col-12 col-md-4">
+                                            <a class="nav-link" data-toggle="tab" href="#panel23" role="tab">Litecoin</a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <!--  Tab panels  -->
+                                    <div class="tab-content vertical text-justify">
+
+                                        <!-- Panel 1 -->
+                                        <div class="tab-pane fade show in active" id="panel21" role="tabpanel">
+                                            <br />
+
+                                            <div class="div-center">
+                                                <h4 class="h4-responsive">Adresse de dépot Bitcoin
+                                                    {% if app.user.adrBTC == null %}
+                                                    <a href="{{ path('generateDepositAdress', {typeAdress:'BTC'}) }}" class="btn btn-sm float-md-right btn-grey btn-rounded mt-3 mt-md-0 mx-0 ml-sm-5"
+                                                            id="btn-gen-btc">Générer une adresse
+                                                    </a>
+                                                    {% endif %}
+                                                </h4>
+                                                <span id="btc-adr">{{ app.user.adrBTC }}</span>
+                                            </div>
+
+                                            <div class="row mt-5 pt-5 mb-5 pb-3">
+                                                <div class="col-12 col-md-6">
+                                                    <div class="md-form">
+                                                        <input type="text" id="mt-dl-btc" name="mt-dl-btc" class="form-control">
+                                                        <label for="mt-dl-btc">Montant en Dollar</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <div class="md-form">
+                                                        <input type="text" id="mt-eq-btc" name="mt-eq-btc" value="" readonly="true" class="form-control">
+                                                        <label for="mt-eq-btc">Equivalent en Bitcoin</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <!-- Panel 1 -->
+
+                                        <!-- Panel 2 -->
+                                        <div class="tab-pane fade" id="panel22" role="tabpanel">
+                                            <br>
+
+                                            <div class="div-center">
+                                                <h4 class="h4-responsive">
+                                                    Adresse de dépot Ethereum
+                                                    {% if app.user.adrETH == null %}
+                                                        <a href="{{ path('generateDepositAdress', {typeAdress:'ETH'}) }}" class="btn btn-sm float-md-right btn-grey btn-rounded mt-3 mt-md-0 mx-0 ml-sm-5"
+                                                           id="btn-gen-eth">Générer une adresse
+                                                        </a>
+                                                    {% endif %}
+                                                </h4>
+                                                <span id="eth-adr">{{ app.user.adrETH }}</span>
+                                            </div>
+
+                                            <div class="row mt-5 pt-5 mb-5 pb-3">
+                                                <div class="col-12 col-md-6">
+                                                    <div class="md-form">
+                                                        <input type="text" id="mt-dl-eth" name="mt-dl-eth" class="form-control">
+                                                        <label for="mt-dl-eth">Montant en Dollar</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <div class="md-form">
+                                                        <input type="text" id="mt-eq-eth" name="mt-eq-eth" value="" readonly="true" class="form-control">
+                                                        <label for="mt-eq-eth">Equivalent en Ethereum</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <!-- Panel 2 -->
+
+                                        <!-- Panel 3 -->
+                                        <div class="tab-pane fade" id="panel23" role="tabpanel">
+                                            <br>
+
+                                            <div class="div-center">
+                                                <h4 class="h4-responsive">
+                                                    Adresse de transaction Litecoin
+                                                    {% if app.user.adrLTC == null %}
+                                                        <a href="{{ path('generateDepositAdress', {typeAdress:'LTC'}) }}" class="btn btn-sm float-md-right btn-grey btn-rounded mt-3 mt-md-0 mx-0 ml-sm-5"
+                                                           id="btn-gen-ltc">Générer une adresse
+                                                        </a>
+                                                    {% endif %}
+                                                </h4>
+                                                <span id="ltc-adr">{{ app.user.adrLTC }}</span>
+                                            </div>
+
+                                            <div class="row mt-5 pt-5 mb-5 pb-3">
+                                                <div class="col-12 col-md-6">
+                                                    <div class="md-form">
+                                                        <input type="text" id="mt-dl-ltc" name="mt-dl-ltc" class="form-control">
+                                                        <label for="mt-dl-ltc">Montant en Dollar</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <div class="md-form">
+                                                        <input type="text" id="mt-eq-ltc" name="mt-eq-ltc" value="" readonly="true" class="form-control">
+                                                        <label for="mt-eq-ltc">Equivalent en Litecoin</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Panel 3 -->
+
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-md-3">
+                                    <button type="button" id="btn-submit" class="btn btn-warning btn-block btn-lg btn-rounded z-depth-1a">Valider</button>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 dashboard-ls panel-h-md mx-0 px-2 mb-3 white-text">
+            <div class="hm-black-strong">
+                <div class="mask flex-center">
+                    <div class="card px-0 mt-4">
+                        <div class="card-body">
+                            <h2 class="card-title h2-responsive mb-5">Mes Ringcoin</h2>
+                            <!-- <div class="mb-5">
+                                Mon Adresse pivée <br />
+                                <span class="orange-text">cncnjucnbBHBJNJnjxcnbkBHBJNJ</span>
+                            </div> -->
+
+                            <div class="mb-5">
+                                Ringcoin disponible <br />
+                                <span>0</span>
+                            </div>
+
+                            <div class="mb-5">
+                                Valeur unitaire
+                                <h3 class="h3-responsive mt-0">0,53$ US <small class="green-text">+ 104,58%</small></h3>
+                            </div>
+
+                            <div class="mb-5">
+                                Valeur total <br />
+                                <h1 class="h1-responsive mt-0 orange-text">0,00$ US</h1>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
+
+
+{% block javascripts %}
+    {% javascripts
+    'bundles/ringcoinapp/js/transaction.js'
+    %}
+    <script src="{{ asset_url }}"> </script>
+    {% endjavascripts %}
+{% endblock %}

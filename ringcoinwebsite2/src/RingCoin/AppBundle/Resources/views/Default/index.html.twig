@@ -1,0 +1,998 @@
+{% extends 'RingCoinAppBundle::default.html.twig' %}
+
+{% trans_default_domain 'RingCoinAppBundle' %}
+
+{% block title %}The next generation of payment system {% endblock %}
+
+{% block mask %}
+    <!-- Video -->
+    <section class="view intro-video">
+        <video poster="{{ asset('bundles/ringcoinapp/img/background-2462431_1920.jpg') }}" playsinline autoplay muted loop>
+            <!--<source src="https://mdbootstrap.com/img/video/Lines.mp4" type="video/mp4">-->
+            <source src="{{ asset('bundles/ringcoinapp/video/video.mp4') }}" type="video/mp4">
+            <source src="{{ asset('bundles/ringcoinapp/video/video.webm') }}" type="video/webm">
+        </video>
+
+        <div class="hm-gradient">
+            <div class="full-bg-img">
+                <div class="container flex-center">
+                    <div class="row pt-0 pt-sm-5 ind-log-w">
+                        <div class="col-md-12 px-3 px-md-0 white-text text-center smooth-scroll">
+                            <div class="wow fadeInDown div-logo" data-wow-delay="0.2s">
+                                <div class="row flex-center">
+                                    <div class="col-md-6 text-center">
+                                        <img src="{{ asset('bundles/ringcoinapp/img/png3.png') }}" />
+                                    </div>
+                                </div>
+                                <!--<h3 class="display-3 white-text mb-2 logo-title">RINGCOIN</h3>-->
+                                <h3 class="subtext-header h3-responsive mb-0 mb-md-2">
+                                    The next generation payment system
+                                </h3>
+
+                                <div class="row info-bar-container">
+                                    <div class="col-lg-6 mt-0 mt-md-5">
+                                        <div class="row mb-4  mt-5 mt-md-0">
+                                            <div class="col-lg-12 text-left">
+                                                {{ 'accueil.presale'|trans }}
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="progress mb-2 info-pg">
+                                                    <div class="progress-bar blue-gradient" id="" role="progressbar" style="width: 100%"
+                                                         aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 text-right">
+                                                51,756,000 RC
+                                            </div>
+                                        </div>
+
+                                        <div class="row mt-5 mt-md-0">
+                                            <div class="col-lg-12">
+                                                <span class="float-left float-md-left text-left">{{ 'accueil.totalSupply'|trans }}</span>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="progress mb-2 info-pg">
+                                                    <div class="progress-bar blue-gradient" id="" role="progressbar" style="width: 100%"
+                                                         aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 text-right">
+                                                <span class="float-md-left"><b>90 800 000</b> RC</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1"></div>
+                                    <div class="col-lg-5 mt-5 mt-md-0">
+                                        <div class="row white-text mb-5 mt-2" id="heure-container">
+                                            <div class="col-lg-12 mb-3"><h5>{{ 'accueil.tokendistribution'|trans }}</h5></div>
+                                            <div class="col-3 col-md-3">
+                                                <h1 id="jours" class="font-bold">00</h1>
+                                                <span>{{ 'accueil.days'|trans }}</span>
+                                            </div>
+                                            <div class="col-3 col-md-3">
+                                                <h1 id="heures" class="font-bold">00</h1>
+                                                <span>{{ 'accueil.hours'|trans }}</span>
+                                            </div>
+                                            <div class="col-3 col-md-3">
+                                                <h1 id="minutes" class="font-bold">00</h1>
+                                                <span>{{ 'accueil.minutes'|trans }}</span>
+                                            </div>
+                                            <div class="col-3 col-md-3">
+                                                <h1 id="secondes" class="font-bold">00</h1>
+                                                <span>{{ 'accueil.seconds'|trans }}</span>
+                                            </div>
+                                            <div class="col-12 col-md-12">
+                                                <hr />
+                                                <h5 class="font-bold" id="date-delai">
+                                                    {{ 'accueil.dateVente'|trans }}
+                                                </h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <a data-offset="90" href="{{ path('fos_user_registration_register') }}" class="btn btn-rounded btn-lg btn-warning animated fadeIn infinite font-bold"
+                                   data-wow-delay="0.2s">{{ 'accueil.btnrcom'|trans }}</a>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block content %}
+
+    <!-- Main content -->
+    <main>
+
+        <div class="f-vid">
+            <a href="https://www.youtube.com/watch?v=keYL-65Czvw" target="_blank" ></a>
+            <iframe className="embed-responsive-item" src="https://www.youtube.com/embed/keYL-65Czvw?autoplay=1&loop=1&playlist=keYL-65Czvw" allowFullScreen></iframe>
+        </div>
+
+        <div class="container-fluid mx-0 px-0">
+
+            <div class="container">
+                <!-- Section: About -->
+                <section id="about-ringcoin" class="section mt-0 mt-md-5 mb-5">
+
+                    <!-- Secion heading -->
+                    <h1 class="text-center mb-3 mt-0 mt-md-5 pt-0 pt-md-5 pb-4 grey-text-2 wow fadeIn"
+                        data-wow-delay="0.2s">{{ 'accueil.section1.title'|trans }}</h1>
+
+                    <!-- Grid row -->
+                    <div class="row">
+
+                        <!-- Grid column -->
+                        <div class="col-lg-12 ml-auto col-md-12 wow fadeIn" data-wow-delay="0.4s">
+
+                            <!-- Description -->
+                            <p>
+                            <h4 class="h4-responsive" align="justify" style="line-height: 1.5em">
+                                {{ 'accueil.section1.p1'|trans }}
+                            </h4>
+                            </p>
+                            <p>
+                            <h4 align="justify" class="h4-responsive">
+                                {{ 'accueil.section1.p2'|trans }}
+                            </h4>
+                            </p>
+                            <p>
+                            <h4 align="justify" class="mb-5 h4-responsive">
+                                {{ 'accueil.section1.p3'|trans }}
+                            </h4>
+                            </p>
+
+                        </div>
+                        <!-- Grid column -->
+
+                        {#  <!-- Grid column -->
+                         <div class="col-lg-12 col-md-12 mb-3 wow fadeIn" data-wow-delay="0.4s">
+
+                             <img src="{{ asset('bundles/ringcoinapp/img/attachment.png') }}" class="img-fluid" alt="My photo">
+                         </div>
+                         <!-- Grid column --> #}
+
+                    </div>
+                    <!-- Grid row -->
+
+                </section>
+                <!-- Section: About -->
+            </div>
+
+            <div class="streak blue-streak streak-photo hm-green-strong-2 primary-bg white-text">
+                <div class="flex-center mask  container">
+
+                    <!-- Section: About -->
+                    <section id="ring-exchange" class="section my-5 py-5 mt-md-5 mb-5">
+
+                        <!-- Secion heading -->
+                        <h1 class="text-center mb-3 mt-0 pt-4 pb-4 grey-text-2 wow fadeIn"
+                            data-wow-delay="0.2s">{{ 'accueil.section2.title'|trans }}</h1>
+
+                        <!-- Grid row -->
+                        <div class="row">
+
+                            <!-- Grid column -->
+                            <div class="col-lg-6 ml-auto col-md-6 wow fadeIn" data-wow-delay="0.4s">
+
+                                <!-- Description -->
+                                <h4 align="justify" class="h4-responsive" style="line-height: 2em">
+                                    {{ 'accueil.section2.p1'|trans }} {{ 'accueil.section2.p2'|trans }}
+                                </h4>
+
+                            </div>
+                            <!-- Grid column -->
+
+                            <!-- Grid column -->
+                            <div class="col-lg-6 col-md-6 mb-3 wow fadeIn" data-wow-delay="0.4s">
+
+                                <img src="{{ asset('bundles/ringcoinapp/img/ringcoin-exchanges.png') }}" class="img-fluid" alt="My photo">
+                            </div>
+                            <!-- Grid column -->
+
+                        </div>
+                        <!-- Grid row -->
+
+
+                    </section>
+                    <!-- Section: About -->
+                </div>
+            </div>
+
+            <div class="container">
+                <!-- Section: About -->
+                <section id="ring-market" class="section  my-5 py-5 mt-md-5 mb-5">
+
+                    <!-- Secion heading -->
+                    <h1 class="text-center mb-3 mt-0 pt-4 pb-4 grey-text-2 wow fadeIn"
+                        data-wow-delay="0.2s">{{ 'accueil.section3.title'|trans }}</h1>
+
+                    <!-- Grid row -->
+                    <div class="row">
+
+                        <!-- Grid column -->
+                        <div class="col-lg-6 col-md-6 mb-3 wow fadeIn" data-wow-delay="0.4s">
+
+                            <img src="{{ asset('bundles/ringcoinapp/img/ringmarket.png') }}" class="img-fluid" alt="ringmarket">
+
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-lg-6 ml-auto col-md-6 mb-2 wow fadeIn" data-wow-delay="0.4s">
+
+                            <!-- Description -->
+                            <h4 align="justify" class="h4-responsive" style="line-height: 2em">
+                                {{ 'accueil.section3.p1'|trans }}
+                            </h4><br/>
+
+                        </div>
+                        <!-- Grid column -->
+                        {% if app.request.attributes.get('_locale')=='en' %}
+                            <div class="col-lg-12 col-md-12 mb-3 mt-1 wow fadeIn" data-wow-delay="0.4s">
+                                <h4 align="justify" class="h4-responsive" style="line-height: 2em">
+                                    {{ 'accueil.section3.p2'|trans }}
+                                </h4>
+                            </div>
+                        {% endif %}
+
+                    </div>
+                    <!-- Grid row -->
+
+                </section>
+                <!-- Section: About -->
+            </div>
+
+            <div class="streak blue-streak streak-photo hm-green-strong-2 primary-bg white-text">
+                <div class="flex-center mask  container">
+                    <!-- Section: About -->
+                    <section id="stp-sol" class="section my-5 py-5 mt-md-5 mb-5">
+
+                        <!-- Secion heading -->
+                        <h1 class="text-center mb-3 mt-0 pt-4 pb-4 grey-text-2 wow fadeIn"
+                            data-wow-delay="0.2s">{{ 'accueil.section4.title'|trans }}</h1>
+
+                        <!-- Grid row -->
+                        <div class="row mt-5">
+
+                            <!-- Grid column -->
+                            <div class="col-lg-6 ml-auto col-md-6 pt-0 mb-5 wow fadeIn" data-wow-delay="0.4s">
+
+                                <h4 align="justify" class="h4-responsive" style="line-height: 1.5em">
+                                    {{ 'accueil.section4.p1'|trans }}
+                                </h4>
+
+                            </div>
+                            <!-- Grid column -->
+
+                            <!-- Grid column -->
+                            <div class="col-lg-6 col-md-6 mb-5 wow fadeIn" data-wow-delay="0.4s">
+                                <img src="{{ asset('bundles/ringcoinapp/img/stp.jpg') }}" class="img-fluid">
+                            </div>
+                            <!-- Grid column -->
+
+                            <div class="col-lg-12 col-md-12 mb-3 mt-3 wow fadeIn" data-wow-delay="0.4s">
+                                <h4 align="justify" class="h4-responsive text-center mb-4">{{ 'accueil.section4.p2'|trans }}</h4>
+                                <h4 align="justify" class="h4-responsive" style="line-height: 1.5em">
+                                    {{ 'accueil.section4.p3'|trans }}
+                                </h4>
+                            </div>
+
+                        </div>
+                        <!-- Grid row -->
+
+                    </section>
+                    <!-- Section: About -->
+                </div>
+            </div>
+
+            <div class="container">
+                <!-- Projects section v.2 -->
+                <section id="ringcard" class="section mt-5 mb-5">
+
+                    <!-- Section heading -->
+                    <h1 class="text-center mb-5 mt-5 pt-5 font-down grey-text-2 wow fadeIn" data-wow-delay="0.2s">{{ 'accueil.section5.title'|trans }}</h1>
+
+                    {% if app.request.attributes.get('_locale')=='fr' %}
+                        <!-- Section description -->
+                        <p>
+                        <h4 style="line-height: 1.5em" align="justify" class=" h4-responsive mb-5 pb-2 mt-3 wow fadeIn text-center p-text-lg" data-wow-delay="0.2s">{{ 'accueil.section5.p1'|trans }}</h4>
+
+                        </p>
+                    {% endif %}
+                    <!-- Grid row -->
+                    <div class="row text-center smooth-scroll">
+
+                        <!-- Grid column -->
+                        <div class="col-lg-6 col-md-6 mb-md-2 mt-3 wow fadeIn custom-card" data-wow-delay="0.4s">
+
+                            <!-- Featured image -->
+                            <div class="view img-banner overlay hm-white-slight">
+                                <img src="{{ asset('bundles/ringcoinapp/img/ringcard.jpg') }}">
+                            </div>
+
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Third column -->
+                        <div class="col-lg-6 col-md-6 mb-1 wow fadeIn custom-card text-left" data-wow-delay="0.4s">
+
+                            <p>
+                            <h4 align="justify" class="h4-responsive vertical text-justify" style="line-height: 1.5em">
+                                {{ 'accueil.section5.p2'|trans }}
+                            </h4>
+                            </p>
+                            <p>
+                            <h4 align="justify" class="h4-responsive vertical text-justify" style="line-height: 1.5em">
+                                {{ 'accueil.section5.p3'|trans }}
+                            </h4>
+                            </p>
+
+                        </div>
+                        <!-- Third column -->
+
+                        <!-- Third column -->
+                        <div class="col-12 mb-1 wow fadeIn custom-card text-left" data-wow-delay="0.4s">
+
+                            <h1 class="text-center mb-5 mt-5 pt-5 font-down grey-text-2 wow fadeIn" data-wow-delay="0.2s">{{ 'accueil.section5.p4'|trans }}</h1>
+
+                            <table class="table table-responsive table-bordered text-center font-bold">
+                                <tbody>
+                                <tr>
+                                    <td>Round 1</td>
+                                    <td>$ 0.085</td>
+                                    <td>20 000 000 RC</td>
+                                </tr>
+                                <tr>
+                                    <td>Round 2</td>
+                                    <td>$ 0.4</td>
+                                    <td>25 000 000 RC</td>
+                                </tr>
+                                <tr>
+                                    <td>Round 3</td>
+                                    <td>$ 0.7</td>
+                                    <td>6 756 000 RC</td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+
+                        </div>
+                        <!-- Third column -->
+
+                    </div>
+                    <!-- Grid row -->
+
+                </section>
+                <!-- Projects section v.2 -->
+
+            </div>
+
+        </div>
+
+        <!-- Streak -->
+        <div class="streak streak-photo streak-md hm-green-strong-2"
+             style="background-image: url(' {{ asset('bundles/ringcoinapp/img/blockchain-g.gif') }}'); ">
+            <div class="flex-center mask pattern-1">
+                <div class="text-center white-text">
+                    <h3 class="h3-responsive mb-5"><i class="fa fa-quote-left" aria-hidden="true"></i> {{ 'accueil.citation.text'|trans }} <i class="fa fa-quote-right" aria-hidden="true"></i></h3>
+                    <h5 class="text-center font-italic wow fadeIn" data-wow-delay="0.2s">~ {{ 'accueil.citation.auteur'|trans }}</h5>
+                </div>
+            </div>
+        </div>
+        <!-- Streak -->
+
+        <div class="container">
+            <!-- Section: Details -->
+            <section id="foire-questions" class="section mt-3 mb-5">
+
+                <!-- Section heading -->
+                <h1 class="text-center mb-4 mt-0 mt-md-5 pt-4 pt-md-5 font-down grey-text-2 wow fadeIn" data-wow-delay="0.2s">{{ 'accueil.section6.title'|trans }}</h1>
+
+                <!-- Section description -->
+                <p class="section-description wow fadeIn text-center mb-5 p-text-lg" data-wow-delay="0.2s">{{ 'accueil.section6.p1'|trans }}</p>
+
+                <!-- Grid row -->
+                <div class="row wow fadeIn mt-5" data-wow-delay="0.4s">
+
+                    <div class="col-md-3">
+                        <!--  Nav tabs  -->
+                        <ul class="nav md-pills md-pills-warning pills-primary flex-column" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#panel21" role="tab">{{ 'accueil.section6.menu1.title'|trans }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#panel22" role="tab">{{ 'accueil.section6.menu2.title'|trans }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#panel23" role="tab">{{ 'accueil.section6.menu3.title'|trans }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#panel24" role="tab">{{  'accueil.section6.menu4.title'|trans }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#panel25" role="tab">{{ 'accueil.section6.menu5.title'|trans }}</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-8">
+                        <!--  Tab panels  -->
+                        <div class="tab-content vertical text-justify">
+
+                            <!-- Panel 1 -->
+                            <div class="tab-pane fade show in active" id="panel21" role="tabpanel">
+                                <p>
+                                    <h4 align="justify" class="h4-responsive" style="line-height: 2em">
+                                        {{ 'accueil.section6.menu1.p1'|trans }}
+                                    </h4>
+                                </p>
+                                <p>
+                                    <h4 align="justify" class="h4-responsive" style="line-height: 2em">
+                                        {{ 'accueil.section6.menu1.p2'|trans }}
+                                    </h4>
+                                </p>
+
+                                <p>
+                                    <h4 align="justify" class="h4-responsive" style="line-height: 2em">
+                                        {{ 'accueil.section6.menu1.p3'|trans }}
+                                    </h4>
+                                </p>
+                            </div>
+                            <!-- Panel 1 -->
+
+                            <!-- Panel 2 -->
+                            <div class="tab-pane fade" id="panel22" role="tabpanel">
+                                <p>
+                                    <h4 align="justify" class="h4-responsive" style="line-height: 2em">
+                                        {{ 'accueil.section6.menu2.p1'|trans }}
+                                    </h4>
+                                </p>
+
+                                <p>
+
+                                    <h4 align="justify" class="h4-responsive" style="line-height: 2em">
+                                        {{ 'accueil.section6.menu2.p2'|trans }}
+                                    </h4>
+                                </p>
+
+                            </div>
+                            <!-- Panel 2 -->
+
+                            <!-- Panel 3 -->
+                            <div class="tab-pane fade" id="panel23" role="tabpanel">
+                                <p>
+                                    <h4 align="justify" class="h4-responsive" style="line-height: 2em">
+                                        {{ 'accueil.section6.menu3.p1'|trans }}
+                                    </h4>
+                                </p>
+
+                            </div>
+                            <!-- Panel 3 -->
+
+                            <!-- Panel 4 -->
+                            <div class="tab-pane fade" id="panel24" role="tabpanel">
+                                <p>
+                                    <h4 align="justify" class="h4-responsive" style="line-height: 2em">
+                                        {{ 'accueil.section6.menu4.p1'|trans }}
+                                    </h4>
+                                </p>
+
+
+                                <p>
+                                    <h4 align="justify" class="h4-responsive" style="line-height: 2em">
+                                        {{ 'accueil.section6.menu4.p2'|trans }}
+                                    </h4>
+                                </p>
+
+                                <p>
+                                    <h4 align="justify" class="h4-responsive" style="line-height: 2em">
+                                        {{ 'accueil.section6.menu4.p3'|trans }}
+                                    </h4>
+                                </p>
+
+                            </div>
+                            <!-- Panel 4 -->
+
+                            <!-- Panel 4 -->
+                            <div class="tab-pane fade" id="panel25" role="tabpanel">
+                                <p>
+                                    <h4 align="justify" class="h4-responsive" style="line-height: 2em">
+                                        {{ 'accueil.section6.menu5.p1'|trans }}
+                                    </h4>
+                                </p>
+
+                                <p>
+                                    <h4 align="justify" class="h4-responsive" style="line-height: 2em">
+                                        {{ 'accueil.section6.menu5.p2'|trans }}
+                                    </h4>
+                                </p>
+
+                                <p>
+                                    <h4 align="justify" class="h4-responsive" style="line-height: 2em">
+                                        {{ 'accueil.section6.menu5.p3'|trans }}
+                                    </h4>
+                                </p>
+
+                            </div>
+                            <!-- Panel 4 -->
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-lg-12 text-center pt-5">
+                        <a data-offset="90" class="btn btn-rounded btn-lg btn-warning wow fadeInUp font-bold" data-wow-delay="0.2s">{{ 'accueil.otherQuestion'|trans }}</a>
+
+                        <a href="#calendrier" data-offset="90" class="btn btn-rounded btn-lg btn-outline-warning wow fadeInUp font-bold" data-wow-delay="0.2s">{{ 'accueil.calDev'|trans }}</a>
+                    </div>
+
+                </div>
+                <!-- Grid row -->
+
+            </section>
+            <!-- Section: Details -->
+
+        </div>
+
+
+        <div class="streak white-text event-wrapper calendrier" id="calendrier"  style="background: #03002e">
+
+            <!-- Section: Details -->
+            <section class="section mt-3 mb-5">
+
+                <!-- Section heading -->
+                <h1 class="text-center mb-4 mt-5 pt-5 font-down grey-text-2 wow h1-responsive fadeIn" data-wow-delay="0.2s">{{ 'accueil.calDev'|trans }}</h1>
+
+                <div class="col-md-12">
+                    <!-- Section description -->
+                    <p class="section-description wow fadeIn text-center mb-5 mx-5 px-5 p-text-lg" data-wow-delay="0.2s">{{ 'accueil.section7.p1'|trans }}</p>
+                </div>
+
+                <!-- Grid row -->
+                <div class="container-fluid  text-center fadeIn mt-5 justify-content-md-center" >
+
+                    <div class="row mx-0">
+                        <div class="col-md-5 tooltip-left-wrapper pt-2 mt-4">
+
+                            <div class="tooltip-wrapper wow bounceInLeft" data-wow-delay="0.2s">
+                                <div class="tooltip-right">
+                                    <h4 class="h4-responsive">{{ 'accueil.section7.p2.left'|trans }}</h4>
+                                </div>
+                            </div>
+
+                            <div class="tooltip-date pt-4 text-right wow bounceInLeft" data-wow-delay="0.2s">
+                                <h4 class="h4-responsive text-warning">{{ 'accueil.section7.p3.left'|trans }}</h4>
+                            </div>
+
+                            <div class="tooltip-wrapper wow bounceInLeft" data-wow-delay="0.2s">
+                                <div class="tooltip-right">
+                                    <h5 class="h5-responsive">{{ 'accueil.section7.p4.left'|trans }}</h5>
+                                </div>
+                            </div>
+
+                            <div class="tooltip-date pt-3 text-right wow bounceInLeft" data-wow-delay="0.2s">
+                                <h5 class="h5-responsive text-warning">{{ 'accueil.section7.p5.left'|trans }}</h5>
+                            </div>
+
+                            <div class="tooltip-wrapper wow bounceInLeft" data-wow-delay="0.6s">
+                                <div class="tooltip-right">
+                                    <h5 class="h4-responsive">{{ 'accueil.section7.p6.left'|trans }}</h5>
+                                </div>
+                            </div>
+
+                            <div class="tooltip-date pt-4 text-right wow bounceInLeft" data-wow-delay="0.2s">
+                                <h5 class="h5-responsive text-warning">{{ 'accueil.section7.p7.left'|trans }}</h5>
+                            </div>
+
+                            <div class="tooltip-wrapper wow bounceInLeft" data-wow-delay="0.2s">
+                                <div class="tooltip-right">
+                                    <h5 class="h5-responsive">Ring Wallet</h5>
+                                </div>
+                            </div>
+
+                            <div class="tooltip-date pt-4 text-right wow bounceInLeft" data-wow-delay="0.2s">
+                                <h5 class="h5-responsive text-warning">Q2 2018</h5>
+                            </div>
+
+                            <div class="tooltip-wrapper wow bounceInLeft" data-wow-delay="0.2s">
+                                <div class="tooltip-right">
+                                    <h5 class="h5-responsive">Ring Pay</h5>
+                                </div>
+                            </div>
+
+                            <div class="tooltip-date pt-4 text-right wow bounceInLeft" data-wow-delay="0.2s">
+                                <h5 class="h5-responsive text-warning">Q1 2019</h5>
+                            </div>
+
+                            <div class="tooltip-wrapper wow bounceInLeft" data-wow-delay="0.2s">
+                                <div class="tooltip-right">
+                                    <h5 class="h5-responsive">Ring Market</h5>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-2 text-center">
+                            <div class="vertical-bar"></div>
+
+                            <div class="col-md-12 vertical-icon mt-4">
+                                <img src="{{ asset('bundles/ringcoinapp/img/ringcoin.png') }}" class="rounded-circle z-depth-1" alt="Second sample avatar image" />
+                            </div>
+
+                            <div class="col-md-12 vertical-icon">
+                                <img src="{{ asset('bundles/ringcoinapp/img/ringcoin.png') }}" class="rounded-circle z-depth-1" alt="Second sample avatar image" />
+                            </div>
+
+                            <div class="col-md-12 vertical-icon mt-4">
+                                <img src="{{ asset('bundles/ringcoinapp/img/ringcoin.png') }}" class="rounded-circle z-depth-1" alt="Second sample avatar image" />
+                            </div>
+
+                            <div class="col-md-12 vertical-icon">
+                                <img src="{{ asset('bundles/ringcoinapp/img/ringcoin.png') }}" class="rounded-circle z-depth-1" alt="Second sample avatar image" />
+                            </div>
+
+                            <div class="col-md-12 vertical-icon mt-4">
+                                <img src="{{ asset('bundles/ringcoinapp/img/ringcoin.png') }}" class="rounded-circle z-depth-1" alt="Second sample avatar image" />
+                            </div>
+
+                            <div class="col-md-12 vertical-icon">
+                                <img src="{{ asset('bundles/ringcoinapp/img/ringcoin.png') }}" class="rounded-circle z-depth-1" alt="Second sample avatar image" />
+                            </div>
+
+                            <div class="col-md-12 vertical-icon mt-4">
+                                <img src="{{ asset('bundles/ringcoinapp/img/ringcoin.png') }}" class="rounded-circle z-depth-1" alt="Second sample avatar image" />
+                            </div>
+
+                            <div class="col-md-12 vertical-icon">
+                                <img src="{{ asset('bundles/ringcoinapp/img/ringcoin.png') }}" class="rounded-circle z-depth-1" alt="Second sample avatar image" />
+                            </div>
+
+                            <div class="col-md-12 vertical-icon">
+                                <img src="{{ asset('bundles/ringcoinapp/img/ringcoin.png') }}" class="rounded-circle z-depth-1" alt="Second sample avatar image" />
+                            </div>
+
+                            <div class="col-md-12 vertical-icon mt-4">
+                                <img src="{{ asset('bundles/ringcoinapp/img/ringcoin.png') }}" class="rounded-circle z-depth-1" alt="Second sample avatar image" />
+                            </div>
+
+                            <div class="col-md-12 vertical-icon">
+                                <img src="{{ asset('bundles/ringcoinapp/img/ringcoin.png') }}" class="rounded-circle z-depth-1" alt="Second sample avatar image" />
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-5 text-right mt-4">
+
+                            <div class="tooltip-date pt-4 text-left  wow bounceInRight" data-wow-delay="0.4s">
+                                <h5 class="h4-responsive text-warning">{{ 'accueil.section7.p2.right'|trans }}</h5>
+                            </div>
+
+                            <div class="tooltip-wrapper pt-2 wow bounceInRight" data-wow-delay="0.4s">
+                                <div class="tooltip-left">
+                                    <h5 class="h5-responsive">{{ 'accueil.section7.p3.right'|trans }}</h5>
+                                </div>
+                            </div>
+
+                            <div class="tooltip-date pt-4 text-left wow bounceInRight" data-wow-delay="0.4s">
+                                <h5 class="h5-responsive text-warning">{{ 'accueil.section7.p4.right'|trans }}</h5>
+                            </div>
+
+                            <div class="tooltip-wrapper pt-2 wow bounceInRight" data-wow-delay="0.4s">
+                                <div class="tooltip-left">
+                                    <h5 class="h5-responsive">{{ 'accueil.section7.p5.right'|trans }}</h5>
+                                </div>
+                            </div>
+
+                            <div class="tooltip-date pt-3 text-left wow bounceInRight" data-wow-delay="0.4s">
+                                <h5 class="h5-responsive text-warning">{{ 'accueil.section7.p6.right'|trans }}</h5>
+                            </div>
+
+                            <div class="tooltip-wrapper pt-2 wow bounceInRight" data-wow-delay="0.4s">
+                                <div class="tooltip-left">
+                                    <h5 class="h5-responsive">{{ 'accueil.section7.p7.right'|trans }}</h5>
+                                </div>
+                            </div>
+
+                            <div class="tooltip-date pt-1 text-left wow bounceInRight" data-wow-delay="0.4s">
+                                <h5 class="h5-responsive text-warning">Q1 2018</h5>
+                            </div>
+
+                            <div class="tooltip-wrapper pt-2 wow bounceInRight" data-wow-delay="0.4s">
+                                <div class="tooltip-left">
+                                    <h5 class="h5-responsive">Ring Exchange</h5>
+                                </div>
+                            </div>
+
+                            <div class="tooltip-date pt-1 text-left wow bounceInRight" data-wow-delay="0.4s">
+                                <h5 class="h5-responsive text-warning">Q3 2018</h5>
+                            </div>
+
+                            <div class="tooltip-wrapper pt-2 wow bounceInRight" data-wow-delay="0.4s">
+                                <div class="tooltip-left">
+                                    <h5 class="h5-responsive">Ring Card</h5>
+                                </div>
+                            </div>
+
+                            <div class="tooltip-date pt-1 text-left wow bounceInRight" data-wow-delay="0.4s">
+                                <h5 class="h5-responsive text-warning">Q4 2019</h5>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+        <div class="streak white-text event-wrapper calendrier-sm" id="calendrier"  style="background: #03002e">
+
+            <!-- Section: Details -->
+            <section class="section mt-3 mb-5 px-sm-5">
+
+                <!-- Section heading -->
+                <h1 class="text-center mb-4 mt-5 pt-5 font-down grey-text-2 wow  fadeIn" data-wow-delay="0.2s">{{ 'accueil.calDev'|trans }}</h1>
+
+                <!-- Section description -->
+                <p class="section-description wow fadeIn text-center mb-5 p-text-lg" data-wow-delay="0.2s">{{ 'accueil.section7.p1'|trans }}</p>
+
+                <!-- Grid row -->
+                <div class="container-fluid  text-center fadeIn mt-5 justify-content-md-center" >
+                    <div class="row mx-0">
+
+                        <div class="col-12 col-sm-12 mb-5 mx-0 px-0">
+                            <img src="{{ asset('bundles/ringcoinapp/img/ringcoin.png') }}" class="rounded-circle mb-3" alt="Second sample avatar image" />
+
+                            <div class="popover black-text text-center">
+                                <div class="popover-arrow"></div>
+                                <h3 class="h3-responsive">{{ 'accueil.section7.p2.left'|trans }} </h3>
+                                <h4 class="h4-responsive text-warning font-bold">{{ 'accueil.section7.p2.right'|trans }} </h4>
+                            </div><!--/.popover-->
+                        </div>
+
+                        <div class="col-12 col-sm-12 mb-5 mx-0 px-0">
+                            <img src="{{ asset('bundles/ringcoinapp/img/ringcoin.png') }}" class="rounded-circle mb-3" alt="Second sample avatar image" />
+
+                            <div class="popover black-text text-center">
+                                <div class="popover-arrow"></div>
+                                <h3 class="h3-responsive">{{ 'accueil.section7.p3.left'|trans }} </h3>
+                                <h4 class="h4-responsive text-warning font-bold">{{ 'accueil.section7.p3.right'|trans }} </h4>
+                            </div><!--/.popover-->
+                        </div>
+
+                        <div class="col-12 col-sm-12 mb-5 mx-0 px-0">
+                            <img src="{{ asset('bundles/ringcoinapp/img/ringcoin.png') }}" class="rounded-circle mb-3" alt="Second sample avatar image" />
+
+                            <div class="popover black-text text-center">
+                                <div class="popover-arrow"></div>
+                                <h3 class="h3-responsive">{{ 'accueil.section7.p4.left'|trans }} </h3>
+                                <h4 class="h4-responsive text-warning font-bold">{{ 'accueil.section7.p4.right'|trans }} </h4>
+                            </div><!--/.popover-->
+                        </div>
+
+                        <div class="col-12 col-sm-12 mb-5 mx-0 px-0">
+                            <img src="{{ asset('bundles/ringcoinapp/img/ringcoin.png') }}" class="rounded-circle mb-3" alt="Second sample avatar image" />
+
+                            <div class="popover black-text text-center">
+                                <div class="popover-arrow"></div>
+                                <h3 class="h3-responsive">{{ 'accueil.section7.p5.left'|trans }}</h3>
+                                <h4 class="h4-responsive text-warning font-bold">{{ 'accueil.section7.p5.right'|trans }} </h4>
+                            </div><!--/.popover-->
+                        </div>
+
+                        <div class="col-12 col-sm-12 mb-5 mx-0 px-0">
+                            <img src="{{ asset('bundles/ringcoinapp/img/ringcoin.png') }}" class="rounded-circle mb-3" alt="Second sample avatar image" />
+
+                            <div class="popover black-text text-center">
+                                <div class="popover-arrow"></div>
+                                <h3 class="h3-responsive">{{ 'accueil.section7.p6.left'|trans }}</h3>
+                                <h4 class="h4-responsive text-warning font-bold">{{ 'accueil.section7.p6.right'|trans }}</h4>
+                            </div><!--/.popover-->
+                        </div>
+
+                        <div class="col-12 col-sm-12 mb-5 mx-0 px-0">
+                            <img src="{{ asset('bundles/ringcoinapp/img/ringcoin.png') }}" class="rounded-circle mb-3" alt="Second sample avatar image" />
+
+                            <div class="popover black-text text-center">
+                                <div class="popover-arrow"></div>
+                                <h3 class="h3-responsive">{{ 'accueil.section7.p7.left'|trans }}</h3>
+                                <h4 class="h4-responsive text-warning font-bold">{{ 'accueil.section7.p7.right'|trans }}</h4>
+                            </div><!--/.popover-->
+                        </div>
+
+                        <div class="col-12 col-sm-12 mb-5 mx-0 px-0">
+                            <img src="{{ asset('bundles/ringcoinapp/img/ringcoin.png') }}" class="rounded-circle mb-3" alt="Second sample avatar image" />
+
+                            <div class="popover black-text text-center">
+                                <div class="popover-arrow"></div>
+                                <h3 class="h3-responsive">Ring Wallet</h3>
+                                <h4 class="h4-responsive text-warning font-bold">Q1 2018</h4>
+                            </div><!--/.popover-->
+                        </div>
+
+                        <div class="col-12 col-sm-12 mb-5 mx-0 px-0">
+                            <img src="{{ asset('bundles/ringcoinapp/img/ringcoin.png') }}" class="rounded-circle mb-3" alt="Second sample avatar image" />
+
+                            <div class="popover black-text text-center">
+                                <div class="popover-arrow"></div>
+                                <h3 class="h3-responsive">Ring Exchange</h3>
+                                <h4 class="h4-responsive text-warning font-bold">Q2 2018</h4>
+                            </div><!--/.popover-->
+                        </div>
+
+                        <div class="col-12 col-sm-12 mb-5 mx-0 px-0">
+                            <img src="{{ asset('bundles/ringcoinapp/img/ringcoin.png') }}" class="rounded-circle mb-3" alt="Second sample avatar image" />
+
+                            <div class="popover black-text text-center">
+                                <div class="popover-arrow"></div>
+                                <h3 class="h3-responsive">Ring Pay</h3>
+                                <h4 class="h4-responsive text-warning font-bold">Q3 2018</h4>
+                            </div><!--/.popover-->
+                        </div>
+
+                        <div class="col-12 col-sm-12 mb-5 mx-0 px-0">
+                            <img src="{{ asset('bundles/ringcoinapp/img/ringcoin.png') }}" class="rounded-circle mb-3" alt="Second sample avatar image" />
+
+                            <div class="popover black-text text-center">
+                                <div class="popover-arrow"></div>
+                                <h3 class="h3-responsive">Ring Card</h3>
+                                <h4 class="h4-responsive text-warning font-bold">Q1 2019</h4>
+                            </div><!--/.popover-->
+                        </div>
+
+                        <div class="col-12 col-sm-12 mb-5 mx-0 px-0">
+                            <img src="{{ asset('bundles/ringcoinapp/img/ringcoin.png') }}" class="rounded-circle mb-3" alt="Second sample avatar image" />
+
+                            <div class="popover black-text text-center">
+                                <div class="popover-arrow"></div>
+                                <h3 class="h3-responsive">Ring Market</h3>
+                                <h4 class="h4-responsive text-warning font-bold">Q4 2019</h4>
+                            </div><!--/.popover-->
+                        </div>
+
+
+                    </div>
+                </div>
+                <!-- Grid row -->
+
+            </section>
+
+        </div>
+
+
+        <div class="container">
+
+            <!-- Section: Team v.1 -->
+            <section class="section team-section pb-5">
+
+                <!-- Section heading -->
+                <h1 class="text-center mb-5 mt-5 pt-5 font-down grey-text-2 wow fadeIn" data-wow-delay="0.2s">{{ 'accueil.section8.title'|trans }}</h1>
+
+                <!-- Grid row -->
+                <div class="row text-center">
+
+                    <!-- Grid column -->
+                    <div class="col-lg-3 col-md-6 mb-r">
+
+                        <div class="avatar mb-2">
+                            <img src="{{ asset('bundles/ringcoinapp/img/team/t1.png') }}" class="rounded-circle z-depth-1" alt="Second sample avatar image" />
+                        </div>
+                        <h4>Mohamed Gam</h4>
+                        <h6 class="font-bold indigo-text">Advisor of Blockhain Technology</h6>
+                        <!-- Linkedin -->
+                        <a class="icons-sm li-ic"><i class="fa fa-linkedin"> </i></a>
+
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-lg-3 col-md-6 mb-r">
+
+                        <div class="avatar mb-2">
+                            <img src="{{ asset('bundles/ringcoinapp/img/team/t2.png') }}" class="rounded-circle z-depth-1" alt="Second sample avatar image" />
+                        </div>
+                        <h4>Yann Meplon</h4>
+                        <h6 class="font-bold indigo-text">Currency Manager/ Business advisor</h6>
+                        <!-- Linkedin -->
+                        <a href="https://www.linkedin.com/in/yann-meplon" class="icons-sm li-ic"><i class="fa fa-linkedin"> </i></a>
+
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-lg-3 col-md-6 mb-r">
+
+                        <div class="avatar mb-2">
+                            <img src="{{ asset('bundles/ringcoinapp/img/team/t3.png') }}" class="rounded-circle z-depth-1" alt="Third sample avatar image" />
+                        </div>
+                        <h4>Mac-Elly DESLANCES</h4>
+                        <h6 class="font-bold indigo-text">Marketing strategist</h6>
+                        <!-- Linkedin -->
+                        <a href="https://www.linkedin.com/in/mac-elly-deslances-55238473" class="icons-sm li-ic"><i class="fa fa-linkedin"> </i></a>
+
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-lg-3 col-md-6 mb-r">
+
+                        <div class="avatar mb-2">
+                            <img src="{{ asset('bundles/ringcoinapp/img/team/t4.png') }}" class="rounded-circle z-depth-1" alt="Fourth sample avatar image" />
+                        </div>
+                        <h4>Ansel dél Rubia</h4>
+                        <h6 class="font-bold indigo-text">Business advisor/ Translator</h6>
+                        <!-- Linkedin -->
+                        <a class="icons-sm li-ic"><i class="fa fa-linkedin"> </i></a>
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-lg-3 col-md-6 mb-r">
+
+                        <div class="avatar mb-2">
+                            <img src="{{ asset('bundles/ringcoinapp/img/team/t5.png') }}" class="rounded-circle z-depth-1" alt="Second sample avatar image" />
+                        </div>
+                        <h4>Sebastien Robine</h4>
+                        <h6 class="font-bold indigo-text">Project development advisor</h6>
+                        <!-- Linkedin -->
+                        <a href="https://www.linkedin.com/in/sebastien-robine-8bb87684/" class="icons-sm li-ic"><i class="fa fa-linkedin"> </i></a>
+
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-lg-3 col-md-6 mb-r">
+
+                        <div class="avatar mb-2">
+                            <img src="{{ asset('bundles/ringcoinapp/img/team/t6.png') }}" class="rounded-circle z-depth-1" alt="Third sample avatar image" />
+                        </div>
+                        <h4>Dr Gilles Brice M'bakob</h4>
+                        <h6 class="font-bold indigo-text">Financial consultant/ Project Manager of Ringmarket</h6>
+                        <!-- Linkedin -->
+                        <a href="https://www.linkedin.com/in/gilles-brice-mbakob-90453a154/" class="icons-sm li-ic"><i class="fa fa-linkedin"> </i></a>
+
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-lg-3 col-md-6 mb-r">
+
+                        <div class="avatar mb-2">
+                            <img src="{{ asset('bundles/ringcoinapp/img/team/t7.png') }}" class="rounded-circle z-depth-1" alt="Second sample avatar image" />
+                        </div>
+                        <h4>Chan bao</h4>
+                        <h6 class="font-bold indigo-text">Smart contract developer</h6>
+                        <!-- Linkedin -->
+                        <a class="icons-sm li-ic"><i class="fa fa-linkedin"> </i></a>
+
+                    </div>
+                    <!-- Grid column -->
+
+                </div>
+                <!-- Grid row -->
+
+            </section>
+            <!-- Section: Team v.1
+            <hr class="between-sections" />  -->
+        </div>
+
+    </main>
+
+{% endblock %}
+
+{% block javascripts %}
+    {% javascripts  'bundles/ringcoinapp/js/index.js' %}
+    <script src="{{ asset_url }}"> </script>
+    {% endjavascripts %}
+{% endblock %}
+

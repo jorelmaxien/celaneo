@@ -1,0 +1,30 @@
+services:
+#    ring_coin_app.example:
+#        class: RingCoin\AppBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+
+
+    ring_coin_app.cryptage:
+        class: RingCoin\AppBundle\Services\Cryptage
+
+
+    ring_coin_app.authentication:
+        class: RingCoin\AppBundle\Services\Authentication
+        arguments: ["@security.encoder_factory", "@fos_user.user_manager"]
+
+
+    ring_coin_app.notify_listener:
+        class: RingCoin\AppBundle\Listeners\NotifyListener
+        arguments:
+          - "@fos_user.mailer.twig_swift"
+          - "@mailer"
+          - "@fos_user.util.token_generator"
+        tags:
+          - {name: kernel.event_listener, event: ring_coin_app.send_mail, method: sendMail}
+          - {name: kernel.event_listener, event: ring_coin_app.email_activation, method: sendEmailActivation}
+          - {name: kernel.event_listener, event: ring_coin_app.send_simple_mail, method: sendSimpleMail}
+
+    ring_coin_app.authneticate_coinbase:
+        class: RingCoin\AppBundle\Services\AuthenticateCoinbaseApiService
+
+

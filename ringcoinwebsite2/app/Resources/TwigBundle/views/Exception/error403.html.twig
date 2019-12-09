@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Error {{ status_code }} | RingCoin</title>
+
+    {% stylesheets filter='cssrewrite'
+    'bundles/ringcoinapp/css/bootstrap.min.css'
+    'bundles/ringcoinapp/css/font-awesome.css'
+    'bundles/ringcoinapp/css/mdb.min.css'
+    'bundles/ringcoinapp/css/style.css'
+    %}
+
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+
+    {% endstylesheets %}
+
+    <link href="{{ asset('bundles/ringcoinapp/css/styleerror.css') }}" rel="stylesheet" type="text/css" media="all">
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+
+<body>
+
+<div class="header">
+    <h1>Ringcoin Error Page</h1>
+</div>
+<div class="w3-main">
+    <div class="agile-info">
+        <h2>{{ status_code }}</h2>
+        <h3>SORRY</h3>
+        <p>Cette page n'existe pas</p>
+        <a href="{{ path('homepage') }}"><i class="fa fa-angle-double-left" aria-hidden="true"></i>Accueil</a>
+    </div>
+</div>
+<div class="footer-w3l">
+    <p>&copy; 2017 Ringcoin. Powered by Team Programmer</p>
+</div>
+
+</body>
+</html>
+
+

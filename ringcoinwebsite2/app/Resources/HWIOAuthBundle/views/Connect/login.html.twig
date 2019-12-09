@@ -1,0 +1,78 @@
+{% extends 'RingCoinAppBundle:Default:index.html.twig' %}
+
+{% block title_index %}Login{% endblock %}
+
+{% block mask %}
+
+    <!--Mask-->
+    <div class="view hm-black-strong login-view" style="background-image: url( {{ asset('bundles/ringcoinapp/img/back_inscr.jpg') }} ); ">
+        <div class="full-bg-img">
+            <div class="row" style="margin-top: 7rem">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <!--Form without header-->
+                    <section class="form-elegant">
+                        <!--Form without header-->
+                        <div class="card">
+
+                            <div class="card-body mx-4">
+
+                                <!--Header-->
+                                <div class="text-center">
+                                    <h3 class="dark-grey-text mb-5"><strong>Connexion</strong></h3>
+                                </div>
+
+                                <!--Body-->
+                                <div class="md-form">
+                                    <input type="text" id="Form-email1" class="form-control">
+                                    <label for="Form-email1">Votre email</label>
+                                </div>
+
+                                <div class="md-form pb-3">
+                                    <input type="password" id="Form-pass1" class="form-control">
+                                    <label for="Form-pass1">Votre mot de passe</label>
+                                    <p class="font-small blue-text d-flex justify-content-end"> <a href="#" class="blue-text ml-1">Mot de passe oublié?</a></p>
+                                </div>
+
+                                <div class="text-center mb-3">
+                                    <button type="button" class="btn blue-gradient btn-block btn-rounded z-depth-1a">Connexion</button>
+                                </div>
+                                <p class="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2"> ou connexion avec:</p>
+
+                                <div class="row my-3 d-flex justify-content-center">
+                                    <!--Facebook-->
+                                    <button type="button" class="btn btn-white btn-rounded mr-md-3 z-depth-1a"><i class="fa fa-facebook blue-text text-center"></i></button>
+                                    <!--Google +-->
+                                    <a href="{{ hwi_oauth_login_url('google') }}" class="btn btn-white btn-rounded z-depth-1a"><i class="fa fa-google-plus blue-text"></i></a>
+                                </div>
+
+                            </div>
+
+                            <!--Footer-->
+                            <div class="modal-footer mx-5 pt-3 mb-1">
+                                <p class="font-small grey-text d-flex justify-content-end">Pas encore inscrit? <a href="#" class="blue-text ml-1"> Inscription</a></p>
+                            </div>
+
+                        </div>
+                        <!--/Form without header-->
+                    </section>
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+        </div>
+    </div>
+    <!--/.Mask-->
+
+    {#
+    {% if error is defined and error %}
+        <span>{{ error }}</span>
+    {% endif %}
+    {% for owner in hwi_oauth_resource_owners() %}
+    <a href="{{ hwi_oauth_login_url(owner) }}">{{ owner | trans({}, 'HWIOAuthBundle') }}</a> <br />
+    {% endfor %} #}
+
+{% endblock %}
+
+
+{% block body_index %}{% endblock %}
+{% block footer %}{% endblock %}

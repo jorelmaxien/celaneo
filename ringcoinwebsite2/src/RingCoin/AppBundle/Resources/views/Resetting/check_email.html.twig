@@ -1,0 +1,9 @@
+{% extends "RingCoinAppBundle:Registration:check_email.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block title %}check-email Resetting{% endblock %}
+
+{% block content %}
+    {{ 'resetting.check_email'|trans({'%tokenLifetime%': tokenLifetime})|nl2br }}
+{% endblock %}

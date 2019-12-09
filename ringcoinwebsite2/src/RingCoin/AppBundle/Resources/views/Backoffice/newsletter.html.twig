@@ -1,0 +1,114 @@
+{% extends "RingCoinAppBundle:Backoffice:default_backoffice.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+{% block title %}Newsletter{% endblock %}
+
+{% block nav_item %}
+    <li class="nav-item">
+        <a class="nav-link waves-effect waves-light" href="{{ path('newsletter') }}">NewsLetter</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link waves-effect waves-light" href="{{ path('backoffice_admin_credite') }}">Crediter</a>
+    </li>
+{% endblock %}
+
+{% block style %}
+    {% stylesheets filter='cssrewrite'
+    'bundles/ringcoinapp/css/summernote/summernote.css'
+    'bundles/ringcoinapp/css/summernote/summernote-bs3.css'
+    %}
+
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+
+    {% endstylesheets %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="row mb-5" style="margin-top: 11rem">
+        <div class="col-sm-0 col-md-3"></div>
+        <div class="col-sm-12 col-md-6">
+            <section class="form-elegant">
+                <div class="card">
+                    <div class="card-body">
+
+                        <form method="post" action="{{ path('newsletter') }}">
+                            <!--Header-->
+                            <div class="text-center">
+                                <h3 class="dark-grey-text mb-5"><strong>Envoyer un email à la communauté</strong></h3>
+                            </div>
+
+                            <div class="md-form">
+                                <i class="fa fa-tag prefix"></i>
+                                <input required type="text" id="ct-object" name="objet" class="form-control">
+                                <label for="ct-object">Objet</label>
+                            </div>
+
+                            <div class="mt-lg-5">
+                                <textarea required type="text" name="sujet" class="mb-0"></textarea>
+                            </div>
+
+                            <div class="text-center mb-3">
+                                <button type="submit" class="btn btn-orange waves-effect btn-rounded z-depth-1a">
+                                    Envoyer <i class="fa fa-send"></i>
+                                </button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <div class="col-sm-0 col-md-3"></div>
+    </div>
+
+
+{% endblock %}
+
+{% block javascripts %}
+    {% javascripts
+    'bundles/ringcoinapp/js/summernote/summernote.min.js'
+    'bundles/ringcoinapp/js/summernote/summernote-fr-FR.js'
+    %}
+    <script src="{{ asset_url }}"> </script>
+    {% endjavascripts %}
+
+    <script>
+        $(document).ready(function()
+        {
+
+            {% for sms in app.session.flashbag.get('toast_success') %}
+            createSnackbar('{{ sms|trans({}, 'RingCoinAppBundle') }}', 'Dismiss');
+            {% endfor %}
+
+            $('textarea').summernote({
+                placeholder: 'Saisissez le contenu de la newsletter ici...',
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['fontname', ['fontname']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link']],
+                    ['view', ['undo', 'redo']]
+                ],
+                lang: "fr-FR",
+                disableDragAndDrop: true,
+                minHeight: null,             // set minimum height of editor
+                height: "300px"             // set maximum height of editor
+                //focus: true                  // set focus to editable area after initializing summernote
+            });
+
+
+        });
+
+    </script>
+{% endblock %}
+
+
+

@@ -1,0 +1,98 @@
+
+{% extends 'RingCoinAppBundle::default.html.twig' %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block title %}Register{% endblock %}
+
+{% block contactUs %}{% endblock %}
+
+{% block style %}
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+{% endblock %}
+
+{% block class %}{{ parent() }} full-height-login{% endblock %}
+
+{% block mask %}
+    {% set datas = [] %}
+
+    {% if form_errors(form.plainPassword.first) %}
+        {% set mdp = form_errors(form.plainPassword.first) %}
+        {% set datas = [mdp] %}
+    {% elseif form_errors(form.email) %}
+        {% set email = form_errors(form.email) %}
+        {% set datas = [email] %}
+    {% elseif form_errors(form.username) %}
+        {% set username = form_errors(form.username) %}
+        {% set datas = [username] %}
+    {% endif %}
+
+    <div class="view hm-black-strong login-view">
+        <div class="full-bg-img">
+            <div class="row px-0 mx-0 px-lg-2 mx-lg-1" style="margin-top: 7rem">
+                <div class="col-sm-3 col-md-3 col-lg-4"></div>
+                <div class="col-sm-6 col-md-6 col-lg-4">
+                    <!--Form without header-->
+                    <section class="form-elegant">
+                        <!--Form without header-->
+                        <div class="card">
+
+                            <div class="mx-4 card-body mb-3">
+
+                                <!--Header-->
+                                <div class="">
+                                    <h3 class="dark-grey-text text-center mb-3"><strong>{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</strong></h3>
+                                    {% if app.session.get('parrain_id') %}
+                                        <div class="alert alert-info text-center">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            {{ 'registerForm.msgParrainage'|trans({}, 'RingCoinAppBundle') }}<b>{{ app.session.get('parrain_name') }}</b>
+                                        </div>
+                                    {% endif %}
+
+                                    {% for sms in app.session.flashbag.get('captcha') %}
+                                        <div class="alert alert-danger text-center white-text">
+                                            <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            {{ sms|trans({}, 'RingCoinAppBundle') }}
+                                        </div>
+                                    {% endfor %}
+
+                                    {% if datas|length > 0 %}
+                                        <div class="alert alert-danger">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            {% for data in datas %}
+                                                {{ data|raw }}
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+
+                                </div>
+
+                                {% include '@FOSUser/Registration/register_content.html.twig' %}
+
+                            </div>
+
+                            <!--Footer-->
+                            <div class="modal-footer mx-5 mb-1">
+                                <p class="font-small grey-text d-flex justify-content-end">{{ 'loginForm.member'|trans({}, 'RingCoinAppBundle') }} <a href="{{ path('fos_user_security_login') }}" class="blue-text ml-1"> {{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a></p>
+                            </div>
+
+                        </div>
+                        <!--/Form without header-->
+                    </section>
+                </div>
+                <div class="col-sm-3 col-md-3 col-lg-4"></div>
+
+            </div>
+
+            <div class="mt-5">
+
+                {% include 'RingCoinAppBundle:Backoffice:footer.html.twig' %}
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block content %}{% endblock %}
+{% block footer %}{% endblock %}

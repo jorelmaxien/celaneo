@@ -1,0 +1,17 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: ring_coin_db
+    database_user: root
+    database_password: Wilson123
+    mailer_transport: smtp
+    mailer_host: mail.ringcorp.net
+    mailer_user: noreply@ringcorp.net
+    mailer_password: noreply2017
+    mailer_port: 465
+    mailer_encryption: ssl
+    secret: be11f7a8641ce0026bb50de0a4f01e9dabc95388
+    cle_api_coinbase: H7k7eo1jcgYuaioT
+    cle_secrete_coinbase: INqxYafcbVTJB6oiw7MMEM9ngDTV5sis
+

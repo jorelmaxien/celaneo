@@ -1,0 +1,39 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+  {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register mt-2'}}) }}
+
+        <div class="md-form mt-4">
+            {{ form_widget(form.email, { 'attr' : { 'class' : 'form-control', id:'user-email'} }) }}
+            {{ form_label(form.email, 'profile.show.email'|trans, {'label_attr': {'for': 'user-email'}}) }}
+        </div>
+        <div class="md-form">
+            {{ form_widget(form.username, { 'attr' : { 'class' : 'form-control', id:'user-username'} }) }}
+            {{ form_label(form.username, 'security.login.username'|trans, {'label_attr': {'for': 'user-username'}}) }}
+        </div>
+        <div class="md-form">
+            {{ form_widget(form.plainPassword.first, { 'attr' : { 'class' : 'form-control', id:'user-pass'} }) }}
+            {{ form_label(form.plainPassword.first, 'security.login.password'|trans, {'label_attr': {'for': 'user-pass'}}) }}
+        </div>
+        <div class="md-form  pb-2">
+            {{ form_widget(form.plainPassword.second, { 'attr' : { 'class' : 'form-control', id:'user-repass'} }) }}
+            {{ form_label(form.plainPassword.second, 'registration.confirm_password'|trans , {'label_attr': {'for': 'user-repass'}}) }}
+        </div>
+
+        <div class="pb-2">
+            <div class="g-recaptcha" data-sitekey="6LduYj4UAAAAAFLcLvf6wbbVfyUPafFKjaWNYjNM"></div>
+        </div>
+
+        <div class="text-center">
+            <button id="btn-sing-up" class="btn blue-gradient btn-block btn-rounded z-depth-1a">{{ 'registration.submit'|trans }}</button>
+        </div>
+  {{ form_end(form) }}
+
+
+  {#   <p class="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2"> ou inscription avec:</p>
+
+    <div class="row my-3 d-flex justify-content-center">
+        <!--Facebook-->
+        <button type="button" class="btn btn-white btn-rounded mr-md-3 z-depth-1a"><i class="fa fa-facebook blue-text text-center"></i></button>
+        <!--Google +-->
+        <a href="#"  class="btn btn-white btn-rounded z-depth-1a"><i class="fa fa-google-plus blue-text"></i></a>
+    </div> #}

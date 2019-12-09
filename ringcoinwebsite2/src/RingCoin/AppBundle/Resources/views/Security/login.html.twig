@@ -1,0 +1,75 @@
+{% extends 'RingCoinAppBundle::default.html.twig' %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block title %}Login{% endblock %}
+
+{% block mask %}
+
+    <!--Mask-->
+    <div class="view hm-black-strong login-view">
+        <div class="full-bg-img">
+            <div class="row px-0 mx-0 px-lg-2 mx-lg-1" style="margin-top: 7rem">
+                <div class="col-sm-3 col-md-3 col-lg-4"></div>
+                <div class="col-sm-6 col-md-6 col-lg-4">
+                    <!--Form without header-->
+                    <section class="form-elegant">
+                        <!--Form without header-->
+                        <div class="card">
+
+                            <div class="card-body mx-4">
+
+                                <!--Header-->
+                                <div class="mb-5">
+                                    <h3 class="dark-grey-text text-center mb-3"><strong>{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</strong></h3>
+                                    {% if error %}
+                                        <div class="alert animated fadeIn alert-with-icon alert-danger alert-dismissible fade show"
+                                             role="alert">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            <i class="fa fa-shield"></i>
+                                            <span data-notify="message">{{ error.messageKey|trans(error.messageData, 'security') }}</span>
+                                        </div>
+                                    {% endif %}
+                                </div>
+
+                                <!--Body-->
+                                {% include '@FOSUser/Security/login_content.html.twig' %}
+
+                                {# <p class="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2"> ou connexion avec:</p>
+
+                                <div class="row my-3 d-flex justify-content-center">
+                                    <!--Facebook-->
+                                    <button type="button" class="btn btn-white btn-rounded mr-md-3 z-depth-1a"><i class="fa fa-facebook blue-text text-center"></i></button>
+                                    <!--Google +-->
+                                    <button type="button" class="btn btn-white btn-rounded z-depth-1a"><i class="fa fa-google-plus blue-text"></i></button>
+                                </div> #}
+
+                            </div>
+
+                            <!--Footer-->
+                            <div class="modal-footer mx-5 pt-3 mb-1">
+                                <p class="font-small grey-text d-flex justify-content-end">{{ 'loginForm.notMember'|trans({}, 'RingCoinAppBundle') }} <a href="{{ path('fos_user_registration_register') }}" class="blue-text ml-1">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a></p>
+                            </div>
+
+                        </div>
+                        <!--/Form without header-->
+                    </section>
+                </div>
+                <div class="col-sm-3 col-md-3 col-lg-4"></div>
+            </div>
+
+            <div class="mt-5">
+
+                {% include 'RingCoinAppBundle:Backoffice:footer.html.twig' %}
+            </div>
+
+        </div>
+    </div>
+    <!--/.Mask-->
+
+{% endblock %}
+
+{% block content %}{% endblock %}
+{% block footer %}{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'RingCoinAppBundle::default.html.twig' %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block title %}{{ 'resetting.email.subject'|trans }}{% endblock %}
+
+
+{% block mask %}
+
+
+    <!--Mask-->
+    <div class="view hm-black-strong login-view">
+        <div class="full-bg-img">
+            <div class="row px-0 mx-0 px-lg-2 mx-lg-1" style="margin-top: 7rem">
+                <div class="col-sm-3 col-md-3 col-lg-4"></div>
+                <div class="col-sm-6 col-md-6 col-lg-4">
+                    <!--Form without header-->
+                    <section class="form-elegant">
+                        <!--Form without header-->
+                        <div class="card">
+
+                            <div class="card-body">
+
+                                <!--Header-->
+                                <div class="mb-5">
+                                    <h3 class="dark-grey-text text-center mb-3"><strong>{{ 'resetting.email.subject'|trans }}</strong></h3>
+                                </div>
+
+                                <!--Body-->
+                                {% include "@FOSUser/Resetting/reset_content.html.twig" %}
+
+                            </div>
+
+                        </div>
+                        <!--/Form without header-->
+                    </section>
+                </div>
+                <div class="col-sm-3 col-md-3 col-lg-4"></div>
+            </div>
+
+            <div class="mt-5">
+                {% include 'RingCoinAppBundle:Backoffice:footer.html.twig' %}
+            </div>
+
+        </div>
+    </div>
+    <!--/.Mask-->
+
+{% endblock %}
+
+{% block content %}{% endblock %}
+{% block footer %}{% endblock %}
+

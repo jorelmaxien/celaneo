@@ -1,0 +1,117 @@
+{% extends 'RingCoinAppBundle::default.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block mask %}
+    <!--Mask-->
+    <div class="view hm-black-strong login-view">
+        <div class="full-bg-img">
+            <div class="row" style="margin-top: 7rem">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <!--Form without header-->
+                    <section class="form-elegant">
+                        <!--Form without header-->
+                        <div class="card">
+
+                            <div class="card-body mx-4">
+
+                                <!--Header-->
+                                <div class="mb-4">
+                                    <h3 class="dark-grey-text text-center mb-3"><strong>Inscription</strong></h3>
+                                    {% if app.session.get('parrain_id') %}
+                                        <div class="alert alert-info text-center">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            Cette inscription est parrainée par <b>{{ app.session.get('parrain_name') }}</b>
+                                        </div>
+                                    {% endif %}
+                                </div>
+
+                                {{ form_start(form, {'action': path('hwi_oauth_connect_registration', {'key': key}), 'attr': {'class': 'fos_user_registration_register'}}) }}
+
+                                <div class="md-form">
+                                    {{ form_widget(form.email, { 'attr' : { 'class' : 'form-control', id:'user-email'} }) }}
+                                    {{ form_label(form.email,'email', {'label_attr': {'for': 'user-email'}}) }}
+                                </div>
+                                <div class="md-form">
+                                    {{ form_widget(form.username, { 'attr' : { 'class' : 'form-control', id:'user-username'} }) }}
+                                    {{ form_label(form.username,'username', {'label_attr': {'for': 'user-username'}}) }}
+                                </div>
+                                <div class="md-form">
+                                    {{ form_widget(form.plainPassword.first, { 'attr' : { 'class' : 'form-control', id:'user-pass'} }) }}
+                                    {{ form_label(form.plainPassword.first, 'security.login.password'|trans, {'label_attr': {'for': 'user-pass'}}) }}
+                                </div>
+                                <div class="md-form  pb-2">
+                                    {{ form_widget(form.plainPassword.second, { 'attr' : { 'class' : 'form-control', id:'user-repass'} }) }}
+                                    {{ form_label(form.plainPassword.second, 'registration.confirm_password'|trans , {'label_attr': {'for': 'user-repass'}}) }}
+                                </div>
+
+                                <div class="text-center mb-3">
+                                    <button id="btn-sing-up" class="btn blue-gradient btn-block btn-rounded z-depth-1a">Inscription</button>
+                                </div>
+
+                                {{ form_end(form) }}
+                                <p class="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2"> ou inscription avec:</p>
+
+                                <div class="row my-3 d-flex justify-content-center">
+                                    <!--Facebook-->
+                                    <button type="button" class="btn btn-white btn-rounded mr-md-3 z-depth-1a"><i class="fa fa-facebook blue-text text-center"></i></button>
+                                    <!--Google +-->
+                                    <button type="button" class="btn btn-white btn-rounded z-depth-1a"><i class="fa fa-google-plus blue-text"></i></button>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <!--/Form without header-->
+                    </section>
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+        </div>
+    </div>
+    <!--/.Mask-->
+
+{% endblock %}
+
+{% block content %}{% endblock %}
+{% block footer %}{% endblock %}
+
+{#
+{% block hwi_oauth_content %}
+    <h3>{{ 'header.register' | trans({'%name%': userInformation.realName}, 'HWIOAuthBundle') }}</h3>
+    <div class="row">
+        <div class="span6">
+            {{ form_start(form, {'action': path('hwi_oauth_connect_registration', {'key': key}), 'attr': {'class': 'hwi_oauth_registration_register'}}) }}
+                {{ form_widget(form) }}
+                <div class="md-form">
+                    {{ form_widget(form.email, { 'attr' : { 'class' : 'form-control', id:'user-email'} }) }}
+                    {{ form_label(form.email, {'label_attr': {'for': 'user-email'}}) }}
+                </div>
+                <div class="md-form">
+                    {{ form_widget(form.username, { 'attr' : { 'class' : 'form-control', id:'user-username'} }) }}
+                    {{ form_label(form.username, {'label_attr': {'for': 'user-username'}}) }}
+                </div>
+                <div class="md-form">
+                    {{ form_widget(form.password, { 'attr' : { 'class' : 'form-control', id:'user-pass'} }) }}
+                    {{ form_label(form.password, {'label_attr': {'for': 'user-pass'}}) }}
+                </div>
+                <div class="md-form  pb-2">
+                    {{ form_widget(form.password_confirmation, { 'attr' : { 'class' : 'form-control', id:'user-repass'} }) }}
+                    {{ form_label(form.password_confirmation, {'label_attr': {'for': 'user-repass'}}) }}
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary">{{ 'connect.registration.submit'|trans({}, 'HWIOAuthBundle') }}</button>
+                    <a href="{{ path('hwi_oauth_connect') }}" class="btn">{{ 'connect.registration.cancel' | trans({}, 'HWIOAuthBundle') }}</a>
+                </div>
+            {{ form_end(form) }}
+        </div>
+        <div class="span6">
+            {% if userInformation.profilePicture is not empty %}
+                <img src="{{ userInformation.profilePicture }}" />
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock hwi_oauth_content %}
+#}

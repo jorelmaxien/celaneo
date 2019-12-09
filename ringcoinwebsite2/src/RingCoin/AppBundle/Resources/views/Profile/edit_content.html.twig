@@ -1,0 +1,31 @@
+{% trans_default_domain 'RingCoinAppBundle' %}
+
+{{ form_start(data.form, { 'action': path('fos_user_profile_edit'), 'method':'POST', 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+        <!--Body-->
+        <div class="md-form white-text" style="margin-top: 4rem;">
+            {{ form_widget(data.form.email, { 'attr' : { 'class' : 'form-control', id:'user-email'} }) }}
+            {{ form_label(data.form.email, 'backoffice.couriel'|trans, {'label_attr': {'for': 'user-email'}}) }}
+        </div>
+
+        <div class="md-form white-text">
+            {{ form_widget(data.form.username, { 'attr' : { 'class' : 'form-control', id:'user-username'} }) }}
+            {{ form_label(data.form.username, 'security.login.username'|trans, {'label_attr': {'for': 'user-username'}}) }}
+        </div>
+
+        <div class="md-form pb-2 white-text">
+            {{ form_label(data.form.nivoExperience,'backoffice.nivoExp'|trans, {'label_attr': {'for': 'user-exp'}}) }}<br class="" />
+            {{ form_widget(data.form.nivoExperience, { 'attr' : { 'class' : 'form-control mt-2', id:'user-exp'} }) }}
+        </div>
+
+
+        <button class="btn btn-rounded btn-orange ml-0">
+            {% if app.user.active==false %}
+                    {{ 'backoffice.verifierEmail'|trans }}
+            {% else %}
+                    {{ 'backoffice.soumettreModif'|trans }}
+            {% endif %}
+        </button>
+
+{{ form_end(data.form) }}
+
+
