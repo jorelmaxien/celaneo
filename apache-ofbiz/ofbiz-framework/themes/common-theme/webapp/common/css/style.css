@@ -1,0 +1,15 @@
+.rpn-green-gradient {
+    background: -webkit-linear-gradient(45deg, #a0b952, #4fa46d, #008f88)!important;
+    background: linear-gradient(45deg, #a0b952, #4fa46d, #008f88)!important;
+    background-image: linear-gradient(45deg, rgb(160, 185, 82), rgb(79, 164, 109), rgb(0, 143, 136)) !important;
+    background-position-x: initial !important;
+    background-position-y: initial !important;
+    background-size: initial !important;
+    background-repeat-x: initial !important;
+    background-repeat-y: initial !important;
+    background-attachment: initial !important;
+    background-origin: initial !important;
+    background-clip: initial !important;
+    background-color: initial !important;
+    border-color: rgb(45deg, #a0b952, #4fa46d, #008f88)!important;
+}

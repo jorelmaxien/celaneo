@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/services.xsd">
+    <description>Achats-Ventes Services</description>
+    <vendor></vendor>
+    <version>1.0</version>
+
+    <service name="createPurchaseOrder" default-entity-name="PurchaseOrder" engine="java"
+             location="org.apache.ofbiz.achatsVentes.purchase.PurchaseServices"
+             invoke="createPurchaseOrder" auth="true">
+        <description>Create an commande</description>
+        <auto-attributes include="pk" mode="OUT" optional="true"/>
+        <auto-attributes include="nonpk" mode="IN" optional="false"/>
+        <override name="comments" optional="true"/>
+        <override name="raisonRejet" optional="true"/>
+        <override name="purchaseOrderStatusId" optional="true"/>
+    </service>
+
+    <service name="updatePurchase" default-entity-name="PurchaseOrder" engine="java"
+             location="org.apache.ofbiz.achatsVentes.purchase.PurchaseServices"
+             invoke="updatePurchase" auth="true">
+        <description>edit an commande</description>
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="false"/>
+        <override name="comments" optional="true"/>
+        <override name="raisonRejet" optional="true"/>
+        <override name="purchaseOrderStatusId" optional="true"/>
+        <override name="partyId" optional="true"/>
+    </service>
+
+    <service name="validation" default-entity-name="PurchaseOrder" engine="java"
+             location="org.apache.ofbiz.achatsVentes.purchase.PurchaseServices"
+             invoke="validationOrder" auth="true">
+        <description>validation</description>
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+    </service>
+
+    <service name="rejet" default-entity-name="PurchaseOrder" engine="java"
+             location="org.apache.ofbiz.achatsVentes.purchase.PurchaseServices"
+             invoke="rejetOrder" auth="true">
+        <description>validation</description>
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+        <override name="raisonRejet" optional="false"/>
+    </service>
+
+    <service name="rejetNotification" default-entity-name="NotificationCommande" engine="java"
+             location="org.apache.ofbiz.achatsVentes.purchase.PurchaseServices"
+             invoke="rejetNotification" auth="true">
+        <description>validation</description>
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+        <override name="raisonRejet" optional="false"/>
+    </service>
+
+    <service name="validationNotificationCommande" default-entity-name="NotificationCommande" engine="java"
+             location="org.apache.ofbiz.achatsVentes.purchase.PurchaseServices"
+             invoke="validationNotification" auth="true">
+        <description>validation</description>
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+    </service>
+
+    <service name="validationPayement" default-entity-name="AuthentificationPayement" engine="java"
+             location="org.apache.ofbiz.achatsVentes.purchase.PurchaseServices"
+             invoke="validationPayement" auth="true">
+        <description>validation</description>
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+    </service>
+
+    <service name="rejetPayement" default-entity-name="AuthentificationPayement" engine="java"
+             location="org.apache.ofbiz.achatsVentes.purchase.PurchaseServices"
+             invoke="rejetPayement" auth="true">
+        <description>rejet</description>
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+    </service>
+
+    <service name="validationAutorisationLivraison" default-entity-name="AutorisationLivraison" engine="java"
+             location="org.apache.ofbiz.achatsVentes.purchase.PurchaseServices"
+             invoke="validationAutorisationLivraison" auth="true">
+        <description>validation</description>
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+    </service>
+    <service name="rejetAutorisationLivraison" default-entity-name="AutorisationLivraison" engine="java"
+             location="org.apache.ofbiz.achatsVentes.purchase.PurchaseServices"
+             invoke="rejetAutorisationLivraison" auth="true">
+        <description>validation</description>
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+    </service>
+
+    <service name="ValidationTicket" default-entity-name="TicketDePese" engine="java"
+             location="org.apache.ofbiz.achatsVentes.purchase.PurchaseServices"
+             invoke="ValidationTicketDePese" auth="true">
+        <description>validation</description>
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+    </service>
+
+    <service name="rejetTicket" default-entity-name="TicketDePese" engine="java"
+             location="org.apache.ofbiz.achatsVentes.purchase.PurchaseServices"
+             invoke="rejetTicketDePese" auth="true">
+        <description>validation</description>
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+    </service>
+    
+</services>

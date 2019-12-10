@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xmlns="http://ofbiz.apache.org/Widget-Form" xsi:schemaLocation="http://ofbiz.apache.org/Widget-Form http://ofbiz.apache.org/dtds/widget-form.xsd">
+    <form name="ListEmplPositions" type="list" separate-columns="true" default-entity-name="EmplPosition" list-name="listIt" paginate-target="FindEmplPositions" paginate="true"
+        odd-row-style="alternate-row" header-row-style="header-row-2" default-table-style="basic-table hover-bar">
+        <actions>
+            <service service-name="performFind" result-map="result" result-map-list="listIt">
+                <field-map field-name="inputFields" from-field="parameters"/>
+                <field-map field-name="entityName" value="EmplPosition"/>
+                <field-map field-name="orderBy" value="emplPositionId"/>
+                <field-map field-name="viewIndex" from-field="viewIndex"/>
+                <field-map field-name="viewSize" from-field="viewSize"/>
+            </service>
+        </actions>
+        <auto-fields-entity entity-name="EmplPosition" default-field-type="display"/>
+        <field name="emplPositionId" title="${uiLabelMap.HumanResEmployeePositionId}" widget-style="linktext">
+            <hyperlink description="${emplPositionId}" target="emplPositionView" also-hidden="false">
+                <parameter param-name="emplPositionId"/>
+            </hyperlink>
+        </field>
+        <field name="partyId" title="${uiLabelMap.PartyPartyId}">
+            <display-entity description="${firstName} ${middleName} ${lastName} ${groupName}" entity-name="PartyNameView">
+                <sub-hyperlink target="viewprofile" link-style="smallSubmit" target-type="inter-app" description="${partyId}">
+                    <parameter param-name="partyId"/>
+                </sub-hyperlink>
+            </display-entity>
+        </field>
+        <field name="statusId"><display-entity entity-name="StatusItem"/></field>
+        <field name="emplPositionTypeId"><display-entity entity-name="EmplPositionType"/></field>
+    </form>
+    <form name="ListEmplPositionsParty" extends="ListEmplPositions" list-name="ListEmplPositions">
+        <actions>
+            <entity-and entity-name="EmplPositionAndFulfillment">
+                <field-map field-name="employeePartyId" from-field="parameters.partyId"/>
+            </entity-and>
+        </actions>
+        <field name="fromDate"><display type="date"/></field>
+        <field name="thruDate"><display type="date"/></field>
+    </form>
+    <form name="EditEmplPosition" type="single" target="updateEmplPosition" title="" default-map-name="emplPosition"
+        header-row-style="header-row" default-table-style="basic-table">
+        <alt-target use-when="emplPosition==null" target="createEmplPosition"/>
+        <auto-fields-service service-name="createEmplPosition"/>
+        <field use-when="emplPosition!=null" name="emplPositionId" title="${uiLabelMap.HumanResEmplPositionId}"><display/></field>
+        <field use-when="emplPosition==null&amp;&amp;emplPositionId==null" name="emplPositionId" title="${uiLabelMap.HumanResEmplPositionId}"><lookup target-form-name="LookupEmplPosition"/></field>
+        <field use-when="emplPosition==null&amp;&amp;emplPositionId!=null" name="emplPositionId" title="${uiLabelMap.HumanResEmplPositionId}" tooltip="${uiLabelMap.CommonCannotBeFound}: [${emplPositionId}]"><display/></field>
+        <field name="partyId" parameter-name="partyId" title="${uiLabelMap.HumanResEmploymentPartyIdFrom}">
+            <drop-down allow-empty="false">
+                <entity-options description="${groupName}" entity-name="PartyRoleAndPartyDetail" key-field-name="partyId">
+                    <entity-constraint name="roleTypeId" value="INTERNAL_ORGANIZATIO"/>
+                    <entity-order-by field-name="partyId"/>
+                </entity-options>
+            </drop-down>
+        </field>
+        <field name="statusId" title="${uiLabelMap.CommonStatus}">
+            <drop-down allow-empty="false">
+                <entity-options key-field-name="statusId" entity-name="StatusItem">
+                    <entity-constraint name="statusTypeId" operator="equals" value="EMPL_POSITION_STATUS"/>
+                    <entity-order-by field-name="description"/>
+                </entity-options>
+            </drop-down>
+        </field>
+        <!--
+           <field name="partyId" title="Organization PartyId">
+               <display-entity description="${groupName}" entity-name="PartyNameView">
+                   <sub-hyperlink target="viewprofile" link-style="smallSubmit" target-type="inter-app" description="${partyId}">
+                       <parameter param-name="partyId"/>
+                   </sub-hyperlink>
+               </display-entity>
+           </field>-->
+        <field name="budgetId"><lookup target-form-name="LookupBudget"/></field>
+        <field name="budgetItemSeqId"><lookup target-form-name="LookupBudgetItem"/></field>
+        <field name="emplPositionTypeId" title="${uiLabelMap.HumanResEmployeePositionTypeId}">
+            <drop-down allow-empty="false">
+                <entity-options key-field-name="emplPositionTypeId" entity-name="EmplPositionType">
+                    <entity-order-by field-name="description"/>
+                </entity-options>
+            </drop-down>
+        </field>
+        <field name="submitButton" use-when="emplPosition==null" title="${uiLabelMap.CommonCreate}" widget-style="buttontext"><submit button-type="text-link"/></field>
+        <field name="submitButton" use-when="emplPosition!=null" title="${uiLabelMap.CommonUpdate}" widget-style="smallSubmit"><submit button-type="button"/></field>
+    </form>
+    <form name="ListEmplPositionFulfillments" type="list" target="updateEmplPositionFulfillment" title="" paginate-target="findEmplPositionFulfillments"
+        odd-row-style="alternate-row" header-row-style="header-row-2" default-table-style="basic-table hover-bar" separate-columns="true">
+        <actions>
+            <entity-condition entity-name="EmplPositionFulfillment">
+                <condition-expr field-name="emplPositionId" operator="equals" from-field="parameters.emplPositionId"/>
+                <order-by field-name="emplPositionId"/>
+            </entity-condition>
+        </actions>
+        <auto-fields-service service-name="updateEmplPositionFulfillment"/>
+        <field name="partyId" title="${uiLabelMap.PartyPartyId}">
+            <display-entity description="${firstName} ${middleName} ${lastName} ${groupName}" entity-name="PartyNameView">
+                <sub-hyperlink target="EmployeeProfile" link-style="smallSubmit" description="${partyId}">
+                    <parameter param-name="partyId"/>
+                </sub-hyperlink>
+            </display-entity>
+        </field>
+        <field name="emplPositionId"><hidden/></field>
+        <field name="fromDate" title="${uiLabelMap.CommonDate}"><display/></field>
+        <field name="submitButton" title="${uiLabelMap.CommonUpdate}"><submit button-type="button"/> </field>
+        <field name="deleteLink" title="${uiLabelMap.CommonDelete}" widget-style="buttontext">
+            <hyperlink description="${uiLabelMap.CommonDelete}" target="deleteEmplPositionFulfillment" also-hidden="false">
+                <parameter param-name="emplPositionId"/>
+                <parameter param-name="partyId"/>
+                <parameter param-name="fromDate"/>
+            </hyperlink>
+        </field>
+    </form>
+    <form name="AddEmplPositionFulfillment" type="single" target="createEmplPositionFulfillment" title=""
+        header-row-style="header-row" default-table-style="basic-table">
+        <auto-fields-service service-name="createEmplPositionFulfillment"/>
+        <field name="emplPositionId"><hidden /></field>
+        <field name="partyId" title="${uiLabelMap.PartyPartyId}" required-field="true"><lookup target-form-name="LookupPartyName"/></field>
+        <field name="statusCompany">
+            <drop-down allow-empty="true">
+                <option key="${uiLabelMap.PartyStatusCompanyWorker}" description="${uiLabelMap.PartyStatusCompanyWorker}"/>
+                <option key="${uiLabelMap.PartyStatusCompanyMasteryOfficer}" description="${uiLabelMap.PartyStatusCompanyMasteryOfficer}"/>
+                <option key="${uiLabelMap.PartyStatusCompanyDirector}" description="${uiLabelMap.PartyStatusCompanyDirector}"/>
+            </drop-down>
+        </field>
+        <field name="category"   required-field="true">
+            <drop-down allow-empty="true">
+                <option key="AM11" description="AM11"/>
+                <option key="AM110" description="AM110"/>
+                <option key="AM112" description="AM112"/>
+                <option key="AM13" description="AM13"/>
+                <option key="AM16" description="AM16"/>
+                <option key="AM17" description="AM17"/>
+                <option key="AM18" description="AM18"/>
+                <option key="AM21" description="AM21"/>
+                <option key="AM22" description="AM22"/>
+                <option key="AM23" description="AM23"/>
+                <option key="AM24" description="AM24"/>
+                <option key="AM25" description="AM25"/>
+                <option key="AM26" description="AM26"/>
+                <option key="AM29" description="AM29"/>
+                <option key="AM31" description="AM31"/>
+                <option key="AM32" description="AM32"/>
+                <option key="AM35" description="AM35"/>
+                <option key="AM36" description="AM36"/>
+                <option key="AM410" description="AM410"/>
+                <option key="AM45" description="AM45"/>
+                <option key="AM58" description="AM58"/>
+                <option key="CA11" description="CA11"/>
+                <option key="CA13" description="CA13"/>
+                <option key="CA14" description="CA14"/>
+                <option key="CA15" description="CA15"/>
+                <option key="CA16" description="CA16"/>
+                <option key="CA18" description="CA18"/>
+                <option key="CA19" description="CA19"/>
+                <option key="CA21" description="CA21"/>
+                <option key="CA211" description="CA211"/>
+                <option key="CA24" description="CA24"/>
+                <option key="CA28" description="CA28"/>
+                <option key="CA29" description="CA29"/>
+                <option key="CA32" description="CA32"/>
+                <option key="CA34" description="CA34"/>
+                <option key="CA36" description="CA36"/>
+                <option key="CA38" description="CA38"/>
+                <option key="CA48" description="CA48"/>
+                <option key="CA51" description="CA51"/>
+                <option key="CA510" description="CA510"/>
+                <option key="CA52" description="CA52"/>
+                <option key="CA55" description="CA55"/>
+                <option key="CA610" description="CA610"/>
+                <option key="OE11" description="OE11"/>
+                <option key="OE12" description="OE12"/>
+                <option key="OE2/10" description="OE2/10"/>
+                <option key="OE21" description="OE21"/>
+                <option key="OE210" description="OE210"/>
+                <option key="OE22" description="OE22"/>
+                <option key="OE23" description="OE23"/>
+                <option key="OE24" description="OE24"/>
+                <option key="OE25" description="OE25"/>
+                <option key="OE26" description="OE26"/>
+                <option key="OE27" description="OE27"/>
+                <option key="OE28" description="OE28"/>
+                <option key="OE29" description="OE29"/>
+                <option key="OE31" description="OE31"/>
+                <option key="OE310" description="OE310"/>
+                <option key="OE32" description="OE32"/>
+                <option key="OE33" description="OE33"/>
+                <option key="OE34" description="OE34"/>
+                <option key="OE35" description="OE35"/>
+                <option key="OE36" description="OE36"/>
+                <option key="OE37" description="OE37"/>
+                <option key="OE38" description="OE38"/>
+                <option key="OE39" description="OE39"/>
+                <option key="OE41" description="OE41"/>
+                <option key="OE410" description="OE410"/>
+                <option key="OE411" description="OE411"/>
+                <option key="OE42" description="OE42"/>
+                <option key="OE43" description="OE43"/>
+                <option key="OE44" description="OE44"/>
+                <option key="OE45" description="OE45"/>
+                <option key="OE46" description="OE46"/>
+                <option key="OE47" description="OE47"/>
+                <option key="OE48" description="OE48"/>
+                <option key="OE49" description="OE49"/>
+                <option key="OE5/10" description="OE5/10"/>
+                <option key="OE51" description="OE51"/>
+                <option key="OE510" description="OE510"/>
+                <option key="OE52" description="OE52"/>
+                <option key="OE53" description="OE53"/>
+                <option key="OE54" description="OE54"/>
+                <option key="OE55" description="OE55"/>
+                <option key="OE56" description="OE56"/>
+                <option key="OE57" description="OE57"/>
+                <option key="OE59" description="OE59"/>
+                <option key="OE61" description="OE61"/>
+                <option key="OE610" description="OE610"/>
+                <option key="OE62" description="OE62"/>
+                <option key="OE63" description="OE63"/>
+                <option key="OE64" description="OE64"/>
+                <option key="OE65" description="OE65"/>
+                <option key="OE66" description="OE66"/>
+                <option key="OE67" description="OE67"/>
+                <option key="OE68" description="OE68"/>
+                <option key="OE69" description="OE69"/>
+                <option key="OE7/10" description="OE7/10"/>
+                <option key="OE71" description="OE71"/>
+                <option key="OE710" description="OE710"/>
+                <option key="OE72" description="OE72"/>
+                <option key="OE73" description="OE73"/>
+                <option key="OE74" description="OE74"/>
+                <option key="OE75" description="OE75"/>
+                <option key="OE76" description="OE76"/>
+                <option key="OE77" description="OE77"/>
+                <option key="OE78" description="OE78"/>
+                <option key="OE79" description="OE79"/>
+                <option key="OE81" description="OE81"/>
+                <option key="OE810" description="OE810"/>
+                <option key="OE82" description="OE82"/>
+                <option key="OE83" description="OE83"/>
+                <option key="OE84" description="OE84"/>
+                <option key="OE85" description="OE85"/>
+                <option key="OE86" description="OE86"/>
+                <option key="OE87" description="OE87"/>
+                <option key="OE88" description="OE88"/>
+                <option key="OE89" description="OE89"/>
+                <option key="OE91" description="OE91"/>
+                <option key="OE910" description="OE910"/>
+                <option key="OE911" description="OE911"/>
+                <option key="OE92" description="OE92"/>
+                <option key="OE93" description="OE93"/>
+                <option key="OE94" description="OE94"/>
+                <option key="OE95" description="OE95"/>
+                <option key="OE96" description="OE96"/>
+                <option key="OE97" description="OE97"/>
+                <option key="OE98" description="OE98"/>
+            </drop-down>
+        </field>
+        <field name="fromDate" title="${uiLabelMap.CommonFromDate}" required-field="true"><date-time default-value="${nowTimestamp}"/></field>
+        <field name="submitButton" title="${uiLabelMap.CommonAdd}"><submit button-type="button"/></field>
+    </form>
+
+    <form name="ListReportsToEmplPositionReportingStructs" type="list" target="updateEmplPositionReportingStruct" title="" paginate-target="EditReportsToEmplPositionReportingStruct"
+        odd-row-style="alternate-row" header-row-style="header-row-2" default-table-style="basic-table hover-bar" separate-columns="true">
+        <actions>
+            <entity-condition entity-name="EmplPositionReportingStruct" list="emplPositionReportingStructList">
+                <condition-expr field-name="emplPositionIdManagedBy" from-field="parameters.emplPositionId"/>
+                <order-by field-name="emplPositionIdManagedBy"/>
+            </entity-condition>
+        </actions>
+        <auto-fields-service service-name="updateEmplPositionReportingStruct"/>
+        <field name="emplPositionId"><hidden value="${parameters.emplPositionId}"/></field>
+        <field name="emplPositionIdReportingTo"><display/></field>
+        <field name="emplPositionIdManagedBy"><display/></field>
+        <field name="fromDate"><display/></field>
+        <field name="comments"><text/></field>
+        <field name="submitButton" title="${uiLabelMap.CommonUpdate}"><submit button-type="button"/> </field>
+        <field name="deleteLink" title="${uiLabelMap.CommonDelete}" widget-style="buttontext">
+            <hyperlink target="deleteEmplPositionReportingStruct"  description="${uiLabelMap.CommonDelete}" also-hidden="false">
+                <parameter param-name="emplPositionIdReportingTo"/>
+                <parameter param-name="emplPositionIdManagedBy"/>
+                <parameter param-name="fromDate"/>
+                <parameter param-name="emplPositionId" from-field="parameters.emplPositionId"/>
+            </hyperlink>
+        </field>
+    </form>
+    <form name="AddReportsToEmplPositionReportingStruct" type="single" target="createEmplPositionReportingStruct" title=""
+        header-row-style="header-row" default-table-style="basic-table">
+        <auto-fields-service service-name="createEmplPositionReportingStruct"/>
+        <field name="emplPositionId"><hidden value="${parameters.emplPositionId}"/></field>
+        <field name="emplPositionIdReportingTo" required-field="true"><lookup target-form-name="LookupEmplPosition"/></field>
+        <field name="emplPositionIdManagedBy" required-field="true"><hidden value="${parameters.emplPositionId}"/></field>
+        <field name="fromDate" required-field="true"><date-time default-value="${nowTimestamp}"/></field>
+        <field name="submitButton" title="${uiLabelMap.CommonAdd}"><submit button-type="button"/></field>
+    </form>
+    <form name="ListReportedToEmplPositionReportingStructs" type="list" target="updateEmplPositionReportingStruct" title="" paginate-target="EditReportedToEmplPositionReportingStruct"
+        odd-row-style="alternate-row" header-row-style="header-row-2" default-table-style="basic-table hover-bar" list-name="emplPositionReportingStructList" separate-columns="true">
+        <actions>
+            <entity-condition entity-name="EmplPositionReportingStruct" list="emplPositionReportingStructList">
+                <condition-expr field-name="emplPositionIdReportingTo" from-field="parameters.emplPositionId"/>
+                <order-by field-name="emplPositionIdReportingTo"/>
+            </entity-condition>
+        </actions>
+        <auto-fields-service service-name="updateEmplPositionReportingStruct"/>
+        <field name="emplPositionId"><hidden value="${parameters.emplPositionId}"/></field>
+        <field name="emplPositionIdManagedBy"><display/></field>
+        <field name="emplPositionIdReportingTo"><display/></field>
+        <field name="fromDate"><display/></field>
+        <field name="comments"><text/></field>
+        <field name="submitButton" title="${uiLabelMap.CommonUpdate}"><submit button-type="button"/> </field>
+        <field name="deleteLink" title="${uiLabelMap.CommonDelete}" widget-style="buttontext">
+            <hyperlink description="${uiLabelMap.CommonDelete}" target="deleteEmplPositionReportingStruct" also-hidden="false">
+                <parameter param-name="emplPositionIdReportingTo"/>
+                <parameter param-name="emplPositionIdManagedBy"/>
+                <parameter param-name="fromDate"/>
+                <parameter param-name="emplPositionId" from-field="parameters.emplPositionId"/>
+            </hyperlink>
+        </field>
+    </form>
+    <form name="AddReportedToEmplPositionReportingStruct" type="single" target="createEmplPositionReportingStruct" title=""
+        header-row-style="header-row" default-table-style="basic-table">
+        <auto-fields-service service-name="createEmplPositionReportingStruct"/>
+        <field name="emplPositionId"><hidden value="${parameters.emplPositionId}"/></field>
+        <field name="emplPositionIdReportingTo"><hidden value="${parameters.emplPositionId}"/></field>
+        <field name="emplPositionIdManagedBy" required-field="true"><lookup target-form-name="LookupEmplPosition"/></field>
+        <field name="fromDate" required-field="true"><date-time default-value="${nowTimestamp}"/></field>
+        <field name="submitButton" title="${uiLabelMap.CommonAdd}"><submit button-type="button"/></field>
+    </form>
+    <form name="ListEmplPositionResponsibilities" type="list" target="updateEmplPositionResponsibility" title="" paginate-target="findEmplPositionResponsibilities"
+        odd-row-style="alternate-row" header-row-style="header-row-2" default-table-style="basic-table hover-bar" separate-columns="true">
+        <actions>
+            <entity-condition entity-name="EmplPositionResponsibility">
+                <condition-expr field-name="emplPositionId" operator="equals" from-field="parameters.emplPositionId"/>
+                <order-by field-name="emplPositionId"/>
+            </entity-condition>
+        </actions>
+        <auto-fields-service service-name="updateEmplPositionResponsibility"/>
+        <field name="emplPositionId"><hidden/></field>
+        <field name="responsibilityTypeId" title="${uiLabelMap.HumanResResponsibilityTypeId}"><display /></field>
+        <field name="fromDate"><display /></field>
+        <field name="submitButton" title="${uiLabelMap.CommonUpdate}"><submit button-type="button"/> </field>
+        <field name="deleteLink" title="${uiLabelMap.CommonDelete}" widget-style="buttontext">
+            <hyperlink description="${uiLabelMap.CommonDelete}" target="deleteEmplPositionResponsibility" also-hidden="false">
+                <parameter param-name="emplPositionId"/>
+                <parameter param-name="responsibilityTypeId"/>
+                <parameter param-name="fromDate"/>
+            </hyperlink>
+        </field>
+    </form>
+    <form name="AddEmplPositionResponsibility" type="single" target="createEmplPositionResponsibility" title=""
+        header-row-style="header-row" default-table-style="basic-table">
+        <auto-fields-service service-name="createEmplPositionResponsibility"/>
+        <field name="emplPositionId"><hidden /></field>
+        <field name="responsibilityTypeId" required-field="true">
+            <drop-down allow-empty="false">
+                <entity-options entity-name="ResponsibilityType" key-field-name="responsibilityTypeId" description=" ${description}">
+                    <entity-order-by field-name="description"/>
+                </entity-options>
+            </drop-down>
+        </field>
+        <field name="fromDate"><date-time default-value="${nowTimestamp}" /></field>
+        <field name="submitButton" title="${uiLabelMap.CommonAdd}"><submit button-type="button"/></field>
+    </form>
+    <form name="ListValidResponsibilities" type="list" target="updateValidResponsibility" title="" paginate-target="findValidResponsibilities"
+        odd-row-style="alternate-row" default-table-style="basic-table hover-bar">
+        <actions>
+            <entity-condition entity-name="EmplPositionResponsibility"/>
+        </actions>
+        <auto-fields-service service-name="updateValidResponsibility"/>
+        <field name="emplPositionTypeId" title="${uiLabelMap.HumanResEmployeePositionTypeId}"><display /></field>
+        <field name="responsibilityTypeId" title="${uiLabelMap.HumanResResponsibilityTypeId}"><display /></field>
+        <field name="fromDate"><display /></field>
+        <field name="submitButton" title="${uiLabelMap.CommonUpdate}"><submit button-type="button"/> </field>
+        <field name="deleteLink" title="${uiLabelMap.CommonDelete}" widget-style="buttontext">
+            <hyperlink description="${uiLabelMap.CommonDelete}" target="deleteValidResponsibility" also-hidden="false">
+                <parameter param-name="emplPositionTypeId" from-field="emplPositionId"/>
+                <parameter param-name="responsibilityTypeId"/>
+                <parameter param-name="fromDate"/>
+            </hyperlink>
+        </field>
+    </form>
+    <form name="AddValidResponsibility" type="single" target="createValidResponsibility" title=""
+        header-row-style="header-row" default-table-style="basic-table">
+        <auto-fields-service service-name="createValidResponsibility"/>
+        <field name="emplPositionTypeId">
+            <drop-down allow-empty="false">
+                <entity-options entity-name="EmplPositionType" key-field-name="emplPositionTypeId" description=" ${description}">
+                    <entity-order-by field-name="description"/>
+                </entity-options>
+            </drop-down>
+        </field>
+        <field name="responsibilityTypeId">
+            <drop-down allow-empty="false">
+                <entity-options entity-name="ResponsibilityType" key-field-name="responsibilityTypeId" description=" ${description}">
+                    <entity-order-by field-name="description"/>
+                </entity-options>
+            </drop-down>
+        </field>
+        <field name="submitButton" title="${uiLabelMap.CommonAdd}"><submit button-type="button"/></field>
+    </form>
+    <form name="FindEmplPositions" type="single" target="FindEmplPositions" header-row-style="header-row" default-table-style="basic-table">
+        <auto-fields-entity entity-name="EmplPosition" default-field-type="find"/>
+        <field name="noConditionFind"><hidden value="Y"/><!-- if this isn't there then with all fields empty no query will be done --></field>
+        <field name="salaryFlag">
+            <drop-down allow-empty="true" current="selected">
+                <option key="Y" description="${uiLabelMap.CommonYes}"/>
+                <option key="N" description="${uiLabelMap.CommonNo}"/>
+            </drop-down>
+        </field>
+        <field name="exemptFlag">
+            <drop-down allow-empty="true" current="selected">
+                <option key="Y" description="${uiLabelMap.CommonYes}"/>
+                <option key="N" description="${uiLabelMap.CommonNo}"/>
+            </drop-down>
+        </field>
+        <field name="fulltimeFlag">
+            <drop-down allow-empty="true" current="selected">
+                <option key="Y" description="${uiLabelMap.CommonYes}"/>
+                <option key="N" description="${uiLabelMap.CommonNo}"/>
+            </drop-down>
+        </field>
+        <field name="temporaryFlag">
+            <drop-down allow-empty="true" current="selected">
+                <option key="Y" description="${uiLabelMap.CommonYes}"/>
+                <option key="N" description="${uiLabelMap.CommonNo}"/>
+            </drop-down>
+        </field>
+        <field name="searchButton" title="${uiLabelMap.CommonFind}" widget-style="smallSubmit"><submit button-type="button"/></field>
+    </form>
+    <form name="EmplPositionInfo" type="single" default-map-name="emplPosition" paginate-target="FindEmplPositions"
+        header-row-style="header-row" default-table-style="basic-table">
+        <auto-fields-service service-name="updateEmplPosition" default-field-type="display"/>
+        <field name="partyId"><display-entity entity-name="PartyGroup" description="${groupName}">
+            <sub-hyperlink target="EmployeeProfile" description="[${emplPosition.partyId}]">
+                <parameter param-name="partyId" from-field="emplPosition.partyId"/>
+            </sub-hyperlink>
+        </display-entity></field>
+        <field name="emplPositionTypeId"><display-entity entity-name="EmplPositionType">
+            <sub-hyperlink target="EditEmplPositionTypes" description="[${emplPosition.emplPositionTypeId}]">
+                <parameter param-name="emplPositionTypeId" from-field="emplPosition.emplPositionTypeId"/>
+            </sub-hyperlink>
+        </display-entity></field>
+    </form>
+    <form name="ListEmplPositionFulfilmentInfo" type="list" list-name="emplPositionFulfillments"
+        odd-row-style="alternate-row" default-table-style="basic-table hover-bar">
+        <auto-fields-service service-name="updateEmplPositionFulfillment" default-field-type="display"/>
+        <field name="emplPositionId"><hidden/></field>
+    </form>
+    <form name="ListEmplPositionResponsibilityInfo" type="list" list-name="emplPositionResponsibilities"
+        odd-row-style="alternate-row" default-table-style="basic-table hover-bar">
+        <auto-fields-service service-name="updateEmplPositionResponsibility" default-field-type="display"/>
+        <field name="emplPositionId"><hidden/></field>
+    </form>
+    <form name="ListEmplPositionReportsToInfo" type="list" list-name="emplPositionReportingStructs"
+        odd-row-style="alternate-row" default-table-style="basic-table hover-bar">
+        <auto-fields-service service-name="updateEmplPositionReportingStruct" default-field-type="display"/>
+        <field name="emplPositionIdManagedBy"><hidden/></field>
+    </form>
+    <form name="ListEmplPositionReportedToInfo" type="list" list-name="emplPositionReportingStructs"
+        odd-row-style="alternate-row" default-table-style="basic-table hover-bar">
+        <auto-fields-service service-name="updateEmplPositionReportingStruct" default-field-type="display"/>
+        <field name="emplPositionIdReportingTo"><hidden/></field>
+    </form>
+    <form name="ListInternalOrg" type="single" target="createInternalOrg" default-map-name="partyRole"
+        header-row-style="header-row" default-table-style="basic-table">
+        <field name="headpartyId" parameter-name="headpartyId"><hidden /></field>
+        <field name="partyId">
+            <drop-down allow-empty="false">
+                <entity-options description="${partyId}" entity-name="PartyRole" key-field-name="partyId">
+                    <entity-constraint name="roleTypeId" value="INTERNAL_ORGANIZATIO"/>
+                    <entity-order-by field-name="partyId"/>
+                </entity-options>
+            </drop-down>
+        </field>
+        <field name="dummy1" title=" " position="1"><display/></field>
+        <field name="submitButton" title="${uiLabelMap.CommonCreate}" widget-style="buttontext"><submit button-type="text-link"/></field>
+    </form>
+</forms>

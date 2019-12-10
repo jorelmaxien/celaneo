@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+<entitymodel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/entitymodel.xsd">
+    <!-- ========================================================= -->
+    <!-- ======================== Defaults ======================= -->
+    <!-- ========================================================= -->
+    <title>Entity of Achats-Ventes Component</title>
+    <description>None</description>
+    <copyright></copyright>
+    <version></version>
+
+    <entity entity-name="PurchasePaymentMode" package-name="org.apache.ofbiz.accounting.reports" title="org.apache.ofbiz.achatsVentes.purchase Payment Mode">
+        <field name="purchasePaymentModeId" type="id"><description>primary sequenced ID</description></field>
+        <field name="description" type="description"></field>
+        <prim-key field="purchasePaymentModeId"/>
+    </entity>
+
+    <entity entity-name="PurchaseOrderStatus" package-name="org.apache.ofbiz.accounting.reports" title="org.apache.ofbiz.achatsVentes.purchase Payment Mode">
+        <field name="purchaseOrderStatusId" type="id"><description>primary sequenced ID</description></field>
+        <field name="description" type="description"></field>
+        <prim-key field="purchaseOrderStatusId"/>
+    </entity>
+    <entity entity-name="signature" package-name="org.apache.ofbiz.accounting.reports" title="org.apache.ofbiz.achatsVentes.purchase Payment Mode">
+        <field name="signatureId" type="id"><description>primary sequenced ID</description></field>
+        <field name="partyId" type="id"></field>
+        <field name="description" type="description"></field>
+        <prim-key field="signatureId"/>
+        <relation type="one" fk-name="PARTY_OD_TYPE_ID" rel-entity-name="Person">
+            <key-map field-name="partyId"/>
+        </relation>
+    </entity>
+
+    <entity entity-name="validation" package-name="org.apache.ofbiz.accounting.reports" title="validation Purchase">
+        <field name="validationId" type="id"><description>primary sequenced ID</description></field>
+        <field name="partyId" type="id"></field>
+        <field name="purchaseOrderId" type="id"></field>
+        <field name="roleTypeId" type="id"></field>
+        <prim-key field="validationId"/>
+        <relation type="one" fk-name="PURCH_OD_ID" rel-entity-name="PurchaseOrder">
+            <key-map field-name="purchaseOrderId"/>
+        </relation>
+        <relation type="one" fk-name="PARTY_OD_TYPE_ID" rel-entity-name="Person">
+            <key-map field-name="partyId"/>
+        </relation>
+        <relation type="one" fk-name="PARTY_OD_TYPE_ID" rel-entity-name="RoleType">
+            <key-map field-name="roleTypeId"/>
+        </relation>
+    </entity>
+
+    <entity entity-name="PurchaseOrder" package-name="org.apache.ofbiz.accounting.reports" title="org.apache.ofbiz.achatsVentes.purchase Order">
+        <field name="purchaseOrderId" type="id">
+            <description>primary sequenced ID</description>
+        </field>
+        <field name="partyId" type="name"></field>
+        <field name="phone" type="numeric"></field>
+        <field name="zone" type="description"></field>
+        <field name="nature" type="description"></field>
+        <field name="quantite" type="numeric"></field>
+        <field name="pu" type="numeric"></field>
+        <field name="valeurTotal" type="numeric"></field>
+        <field name="purchasePaymentModeId" type="id"></field>
+        <field name="paymentPlace" type="description"></field>
+        <field name="purchaseOrderStatusId" type="name"></field>
+        <field name="raisonRejet" type="description"></field>
+        <prim-key field="purchaseOrderId"/>
+        <relation type="one" fk-name="PURCH_OD_TYPE_ID" rel-entity-name="PurchasePaymentMode">
+            <key-map field-name="purchasePaymentModeId"/>
+        </relation>
+        <relation type="one" fk-name="PARTY_OD_TYPE_ID" rel-entity-name="Person">
+            <key-map field-name="partyId"/>
+        </relation>
+        <relation type="one" fk-name="PURCH_OD_STATUS_ID" rel-entity-name="PurchaseOrderStatus">
+            <key-map field-name="purchaseOrderStatusId"/>
+        </relation>
+    </entity>
+
+    <entity entity-name="NotificationCommande" package-name="org.apache.ofbiz.accounting.reports" title="org.apache.ofbiz.achatsVentes.purchase Order">
+        <field name="notificationCommandeId" type="id">
+            <description>primary sequenced ID</description>
+        </field>
+        <field name="purchaseOrderId" type="id"></field>
+        <field name="purchaseOrderStatusId" type="id"></field>
+        <field name="raisonRejet" type="description"></field>
+        <prim-key field="notificationCommandeId"/>
+        <relation type="one" fk-name="COMMANDE_OD_STATUS_ID" rel-entity-name="PurchaseOrderStatus">
+            <key-map field-name="purchaseOrderStatusId"/>
+        </relation>
+        <relation type="one" fk-name="PURCH_OD" rel-entity-name="PurchaseOrder">
+            <key-map field-name="purchaseOrderId"/>
+        </relation>
+    </entity>
+
+    <entity entity-name="ValidationNotificationCommande" package-name="org.apache.ofbiz.accounting.reports" title="validation NotificationCommande">
+        <field name="validationId" type="id"><description>primary sequenced ID</description></field>
+        <field name="partyId" type="id"></field>
+        <field name="roleTypeId" type="id"></field>
+        <field name="notificationCommandeId" type="id"></field>
+        <prim-key field="validationId"/>
+        <relation type="one" fk-name="PURCH_OD_ID" rel-entity-name="NotificationCommande">
+            <key-map field-name="notificationCommandeId"/>
+        </relation>
+        <relation type="one" fk-name="PARTY_OD_TYPE_ID" rel-entity-name="Person">
+            <key-map field-name="partyId"/>
+        </relation>
+        <relation type="one" fk-name="PARTY_OD_TYPE_ID" rel-entity-name="RoleType">
+            <key-map field-name="roleTypeId"/>
+        </relation>
+    </entity>
+
+    <entity entity-name="RejetNotificationCommande" package-name="org.apache.ofbiz.accounting.reports" title="rejet NotificationCommande">
+        <field name="validationId" type="id"><description>primary sequenced ID</description></field>
+        <field name="partyId" type="id"></field>
+        <field name="roleTypeId" type="id"></field>
+        <field name="raisonRejet" type="description"></field>
+        <field name="notificationCommandeId" type="id"></field>
+        <prim-key field="validationId"/>
+        <relation type="one" fk-name="PURCH_OD_ID" rel-entity-name="NotificationCommande">
+            <key-map field-name="notificationCommandeId"/>
+        </relation>
+        <relation type="one" fk-name="PARTY_OD_TYPE_ID" rel-entity-name="Person">
+            <key-map field-name="partyId"/>
+        </relation>
+        <relation type="one" fk-name="PARTY_OD_TYPE_ID" rel-entity-name="RoleType">
+            <key-map field-name="roleTypeId"/>
+        </relation>
+    </entity>
+    <entity entity-name="RejetOrder" package-name="org.apache.ofbiz.accounting.reports" title="rejet NotificationCommande">
+        <field name="validationId" type="id"><description>primary sequenced ID</description></field>
+        <field name="partyId" type="id"></field>
+        <field name="roleTypeId" type="id"></field>
+        <field name="raisonRejet" type="description"></field>
+        <field name="purchaseOrderId" type="id"></field>
+        <prim-key field="validationId"/>
+        <relation type="one" fk-name="PURCH_OD_ID" rel-entity-name="PurchaseOrder">
+            <key-map field-name="purchaseOrderId"/>
+        </relation>
+        <relation type="one" fk-name="PARTY_OD_TYPE_ID" rel-entity-name="Person">
+            <key-map field-name="partyId"/>
+        </relation>
+        <relation type="one" fk-name="PARTY_OD_TYPE_ID" rel-entity-name="RoleType">
+            <key-map field-name="roleTypeId"/>
+        </relation>
+    </entity>
+
+    <entity entity-name="AuthentificationPayement" package-name="org.apache.ofbiz.accounting.reports" title="AuthentificationPayement">
+        <field name="authentificationPayementId" type="id">
+            <description>primary sequenced ID</description>
+        </field>
+        <field name="purchaseOrderId" type="id"></field>
+        <field name="notificationCommandeId" type="id"></field>
+        <field name="purchaseOrderStatusId" type="id"></field>
+        <prim-key field="authentificationPayementId"/>
+        <relation type="one" fk-name="COMMANDE_OD_STATUS_ID" rel-entity-name="NotificationCommande">
+            <key-map field-name="notificationCommandeId"/>
+        </relation>
+        <relation type="one" fk-name="COMMANDE_OD_STATUS_ID" rel-entity-name="PurchaseOrderStatus">
+            <key-map field-name="purchaseOrderStatusId"/>
+        </relation>
+        <relation type="one" fk-name="PURCH_OD" rel-entity-name="PurchaseOrder">
+            <key-map field-name="purchaseOrderId"/>
+        </relation>
+    </entity>
+
+    <entity entity-name="RejetAuthentificationPayement" package-name="org.apache.ofbiz.accounting.reports" title="rejet AuthentificationPayement">
+        <field name="validationId" type="id"><description>primary sequenced ID</description></field>
+        <field name="partyId" type="id"></field>
+        <field name="roleTypeId" type="id"></field>
+        <field name="raisonRejet" type="description"></field>
+        <field name="authentificationPayementId" type="id"></field>
+        <prim-key field="validationId"/>
+        <relation type="one" fk-name="PURCH_OD_ID" rel-entity-name="AuthentificationPayement">
+            <key-map field-name="authentificationPayementId"/>
+        </relation>
+        <relation type="one" fk-name="PARTY_OD_TYPE_ID" rel-entity-name="Person">
+            <key-map field-name="partyId"/>
+        </relation>
+        <relation type="one" fk-name="PARTY_OD_TYPE_ID" rel-entity-name="RoleType">
+            <key-map field-name="roleTypeId"/>
+        </relation>
+    </entity>
+
+    <entity entity-name="ValidationAuthentificationPayement"
+            package-name="org.apache.ofbiz.accounting.reports" title="validation AuthentificationPayement">
+        <field name="validationId" type="id"><description>primary sequenced ID</description></field>
+        <field name="partyId" type="id"></field>
+        <field name="roleTypeId" type="id"></field>
+        <field name="authentificationPayementId" type="id"></field>
+        <prim-key field="validationId"/>
+        <relation type="one" fk-name="PURCH_OD_ID" rel-entity-name="AuthentificationPayement">
+            <key-map field-name="authentificationPayementId"/>
+        </relation>
+        <relation type="one" fk-name="PARTY_OD_TYPE_ID" rel-entity-name="Person">
+            <key-map field-name="partyId"/>
+        </relation>
+        <relation type="one" fk-name="PARTY_OD_TYPE_ID" rel-entity-name="RoleType">
+            <key-map field-name="roleTypeId"/>
+        </relation>
+    </entity>
+
+    <entity entity-name="AutorisationLivraison"
+            package-name="org.apache.ofbiz.accounting.reports" title="AuthentificationPayement">
+        <field name="autorisationLivraisonId" type="id">
+            <description>primary sequenced ID</description>
+        </field>
+        <field name="purchaseOrderId" type="id"></field>
+        <field name="purchaseOrderStatusId" type="id"></field>
+        <field name="notificationCommandeId" type="id"></field>
+        <field name="authentificationPayementId" type="id"></field>
+        <prim-key field="autorisationLivraisonId"/>
+        <relation type="one" fk-name="COMMANDE_OD_STATUS_ID" rel-entity-name="PurchaseOrderStatus">
+            <key-map field-name="purchaseOrderStatusId"/>
+        </relation>
+        <relation type="one" fk-name="PURCH_OD" rel-entity-name="PurchaseOrder">
+            <key-map field-name="purchaseOrderId"/>
+        </relation>
+        <relation type="one" fk-name="NOTIFICATION_OD_STATUS_ID" rel-entity-name="NotificationCommande">
+            <key-map field-name="notificationCommandeId"/>
+        </relation><relation type="one" fk-name="PAYEMENT_OD_STATUS_ID" rel-entity-name="AuthentificationPayement">
+        <key-map field-name="authentificationPayementId"/>
+    </relation>
+    </entity>
+    <entity entity-name="ValidationAutorisationLivraison"
+            package-name="org.apache.ofbiz.accounting.reports"
+            title="validation AuthentificationPayement">
+        <field name="validationId" type="id"><description>primary sequenced ID</description></field>
+        <field name="partyId" type="id"></field>
+        <field name="roleTypeId" type="id"></field>
+        <field name="autorisationLivraisonId" type="id"></field>
+        <prim-key field="validationId"/>
+        <relation type="one" fk-name="PURCH_OD_ID" rel-entity-name="AutorisationLivraison">
+            <key-map field-name="autorisationLivraisonId"/>
+        </relation>
+        <relation type="one" fk-name="PARTY_OD_TYPE_ID" rel-entity-name="Person">
+            <key-map field-name="partyId"/>
+        </relation>
+        <relation type="one" fk-name="PARTY_OD_TYPE_ID" rel-entity-name="RoleType">
+            <key-map field-name="roleTypeId"/>
+        </relation>
+    </entity>
+    <entity entity-name="RejetAutorisationLivraison"
+            package-name="org.apache.ofbiz.accounting.reports"
+            title="rejet AuthentificationPayement">
+        <field name="validationId" type="id"><description>primary sequenced ID</description></field>
+        <field name="partyId" type="id"></field>
+        <field name="roleTypeId" type="id"></field>
+        <field name="raisonRejet" type="description"></field>
+        <field name="autorisationLivraisonId" type="id"></field>
+        <prim-key field="validationId"/>
+        <relation type="one" fk-name="PURCH_OD_ID" rel-entity-name="AutorisationLivraison">
+            <key-map field-name="autorisationLivraisonId"/>
+        </relation>
+        <relation type="one" fk-name="PARTY_OD_TYPE_ID" rel-entity-name="Person">
+            <key-map field-name="partyId"/>
+        </relation>
+        <relation type="one" fk-name="PARTY_OD_TYPE_ID" rel-entity-name="RoleType">
+            <key-map field-name="roleTypeId"/>
+        </relation>
+    </entity>
+
+    <entity entity-name="TicketDePese"
+            package-name="org.apache.ofbiz.accounting.reports" title="Ticket De Pese">
+        <field name="ticketDePeseId" type="id">
+            <description>primary sequenced ID</description>
+        </field>
+        <field name="purchaseOrderId" type="id"></field>
+        <field name="purchaseOrderStatusId" type="id"></field>
+        <field name="authentificationPayementId" type="id"></field>
+        <prim-key field="ticketDePeseId"/>
+        <relation type="one" fk-name="COMMANDE_OD_STATUS_ID" rel-entity-name="PurchaseOrderStatus">
+            <key-map field-name="purchaseOrderStatusId"/>
+        </relation>
+        <relation type="one" fk-name="PAYEMENT_OD_STATUS_ID" rel-entity-name="AuthentificationPayement">
+            <key-map field-name="authentificationPayementId"/>
+        </relation>
+        <relation type="one" fk-name="PURCH_OD" rel-entity-name="PurchaseOrder">
+            <key-map field-name="purchaseOrderId"/>
+        </relation>
+    </entity>
+
+    <entity entity-name="ValidationTicketDePese"
+            package-name="org.apache.ofbiz.accounting.reports"
+            title="validation AuthentificationPayement">
+        <field name="validationId" type="id"><description>primary sequenced ID</description></field>
+        <field name="partyId" type="id"></field>
+        <field name="roleTypeId" type="id"></field>
+        <field name="ticketDePeseId" type="id"></field>
+        <prim-key field="validationId"/>
+        <relation type="one" fk-name="PURCH_OD_ID" rel-entity-name="TicketDePese">
+            <key-map field-name="ticketDePeseId"/>
+        </relation>
+        <relation type="one" fk-name="PARTY_OD_TYPE_ID" rel-entity-name="Person">
+            <key-map field-name="partyId"/>
+        </relation>
+        <relation type="one" fk-name="PARTY_OD_TYPE_ID" rel-entity-name="RoleType">
+            <key-map field-name="roleTypeId"/>
+        </relation>
+    </entity>
+
+    <entity entity-name="RejetTicketDePese"
+            package-name="org.apache.ofbiz.accounting.reports"
+            title="validation AuthentificationPayement">
+        <field name="validationId" type="id"><description>primary sequenced ID</description></field>
+        <field name="partyId" type="id"></field>
+        <field name="roleTypeId" type="id"></field>
+        <field name="ticketDePeseId" type="id"></field>
+        <field name="raisonRejet" type="description"></field>
+        <prim-key field="validationId"/>
+        <relation type="one" fk-name="PURCH_OD_ID" rel-entity-name="TicketDePese">
+            <key-map field-name="ticketDePeseId"/>
+        </relation>
+        <relation type="one" fk-name="PARTY_OD_TYPE_ID" rel-entity-name="Person">
+            <key-map field-name="partyId"/>
+        </relation>
+        <relation type="one" fk-name="PARTY_OD_TYPE_ID" rel-entity-name="RoleType">
+            <key-map field-name="roleTypeId"/>
+        </relation>
+    </entity>
+
+</entitymodel>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+<resource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/ofbiz-properties.xsd">
+    <property key="Achats-VentesApplication">
+        <value xml:lang="en">Achats-Ventes Application</value>
+        <value xml:lang="zh">Achats-Ventes应用程�?</value>
+        <value xml:lang="zh-TW">Achats-Ventes應用程�?</value>
+    </property>
+    <property key="Achats-VentesCompanyName">
+        <value xml:lang="en">OFBiz: Achats-Ventes</value>
+        <value xml:lang="zh-TW">OFBiz: Achats-Ventes</value>
+    </property>
+    <property key="Achats-VentesCompanySubtitle">
+        <value xml:lang="en">Part of the Apache OFBiz Family of Open Source Software</value>
+        <value xml:lang="it">Un modulo della famiglia di software open source Apache OFBiz</value>
+        <value xml:lang="zh">开�?软件OFBiz的组�?部分</value>
+        <value xml:lang="zh-TW">開�?軟體OFBiz的組�?部分</value>
+    </property>
+    <property key="AchatsVentesCompanyName">
+        <value xml:lang="en">Achats/Ventes</value>
+        <value xml:lang="it">Achats/Ventes</value>
+        <value xml:lang="zh">Achats/Ventes</value>
+        <value xml:lang="zh-TW">Achats/Ventes</value>
+    </property>
+    <property key="Achats-VentesViewPermissionError">
+        <value xml:lang="en">You are not allowed to view this page.</value>
+        <value xml:lang="zh">�?�?许你�?览这个页�?�。</value>
+        <value xml:lang="zh-TW">�?�?許您檢視這個�?�?�.</value>
+    </property>
+    <property key="customerFirstName">
+        <value xml:lang="en">Firstname</value>
+        <value xml:lang="fr">Prenom</value>
+    </property>
+    <property key="customerFullName">
+        <value xml:lang="en">Full name</value>
+        <value xml:lang="fr">Nom complet</value>
+    </property>
+    <property key="customerLastName">
+        <value xml:lang="en">Lastname</value>
+        <value xml:lang="fr">Nom</value>
+    </property>
+    <property key="customerPhone">
+        <value xml:lang="en">Phone</value>
+        <value xml:lang="fr">Phone</value>
+    </property>
+    <property key="customerZone">
+        <value xml:lang="en">Zone</value>
+        <value xml:lang="fr">Zone</value>
+    </property>
+    <property key="customerNature">
+        <value xml:lang="en">Nature</value>
+        <value xml:lang="fr">Nature</value>
+    </property>
+    <property key="customerQt">
+        <value xml:lang="en">Quantity</value>
+        <value xml:lang="fr">Quantite</value>
+    </property>
+    <property key="customerPu">
+        <value xml:lang="en">Unite price</value>
+        <value xml:lang="fr">Prix unitaire</value>
+    </property>
+    <property key="customerValeurTotal">
+        <value xml:lang="en">Total value</value>
+        <value xml:lang="fr">Valeur total</value>
+    </property>
+    <property key="customerPurchasePaymentMode">
+        <value xml:lang="en">Payment method</value>
+        <value xml:lang="fr">Mode de payement</value>
+    </property>
+    <property key="customerPaymentPlace">
+        <value xml:lang="en">Places of payment</value>
+        <value xml:lang="fr">Lieux de payement</value>
+    </property>
+    <property key="preCommande">
+        <value xml:lang="en">Pre-order</value>
+        <value xml:lang="fr">Pré-commande</value>
+    </property>
+    <property key="authPayement">
+        <value xml:lang="en">Payment authenfication</value>
+        <value xml:lang="fr">Authentification payement</value>
+    </property>
+    <property key="noCommande">
+        <value xml:lang="en">Order notification</value>
+        <value xml:lang="fr">Notificaton commande</value>
+    </property>
+    <property key="autLivr">
+        <value xml:lang="en">Delivery authorization</value>
+        <value xml:lang="fr">Autorisation de livraison</value>
+    </property>
+    <property key="ticketPesee">
+        <value xml:lang="en">Weighing ticket</value>
+        <value xml:lang="fr">Ticket pesée</value>
+    </property>
+    <property key="checkOrder">
+        <value xml:lang="en">Order tracking</value>
+        <value xml:lang="fr">Suivie de commande</value>
+    </property>
+    <property key="titleListPreOrder">
+        <value xml:lang="en">PRE-ORDER LIST</value>
+        <value xml:lang="fr">LISTE PRE-COMMANDE</value>
+    </property>
+    <property key="titleListNoOrder">
+        <value xml:lang="en">LIST OF ORDER NOTIFICATIONS</value>
+        <value xml:lang="fr">LISTE DES NOTIFICATIONS DE COMMANDES</value>
+    </property>
+    <property key="titleListPaVer">
+        <value xml:lang="en">LIST OF PAYMENT VERIFICATION</value>
+        <value xml:lang="fr">LISTE DES VERIFICATION DE PAYEMENT</value>
+    </property>
+    <property key="titleListAutLiv">
+        <value xml:lang="en">LIST OF DELIVERY AUTHORIZATIONS</value>
+        <value xml:lang="fr">LISTE DES AUTORISATION DE LIVRAISSON</value>
+    </property>
+    <property key="titleListTiPe">
+        <value xml:lang="en">LIST OF WEIGHING TICKETS</value>
+        <value xml:lang="fr">LISTE DES TICKETS DE PESEE</value>
+    </property>
+    <property key="titleAddPreOrder">
+        <value xml:lang="fr">AJOUTER UNE NOUVELLE PRE-COMMANDE</value>
+        <value xml:lang="en">ADD NEW PRE-ORDER</value>
+    </property>
+    <property key="pwd">
+        <value xml:lang="en">password</value>
+        <value xml:lang="fr">mot de passe </value>
+    </property>
+</resource>

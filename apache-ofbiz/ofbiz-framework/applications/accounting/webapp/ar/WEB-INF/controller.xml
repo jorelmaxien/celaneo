@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+<site-conf xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://ofbiz.apache.org/Site-Conf" xsi:schemaLocation="http://ofbiz.apache.org/Site-Conf http://ofbiz.apache.org/dtds/site-conf.xsd">
+    <include location="component://common/webcommon/WEB-INF/common-controller.xml"/>
+    <include location="component://accounting/webapp/accounting/WEB-INF/controller.xml"/>
+    <include location="component://party/webapp/partymgr/WEB-INF/controller.xml"/>
+    <description>Accounting Manager Module Site Configuration File</description>
+    
+    <!-- Request Mappings -->
+    <request-map uri="main">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="main"/>
+    </request-map>
+    <request-map uri="ListReports">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="ListReports"/>
+    </request-map>
+    <request-map uri="findPayments">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="FindPayments"/>
+    </request-map>
+    <request-map uri="batchPayments">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="BatchPayments"/>
+    </request-map>
+    <request-map uri="createPaymentBatch">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="depositWithdrawPayments"/>
+        <response name="success" type="view" value="PaymentGroupOverview"/>
+        <response name="error" type="view" value="BatchPayments"/>
+    </request-map>
+    <request-map uri="newPayment">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="NewIncomingPayment"/>
+    </request-map>
+    <request-map uri="createPayment">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="createPaymentAndFinAccountTrans"/>
+        <response name="success" type="view" value="editPayment"/>
+        <response name="error" type="view" value="NewIncomingPayment"/>
+    </request-map>
+    <request-map uri="findInvoices">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="FindArInvoices"/>
+    </request-map>
+    <request-map uri="newInvoice">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="NewSalesInvoice"/>
+    </request-map>
+    <request-map uri="createInvoice">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="createInvoice"/>
+        <response name="success" type="request" value="editInvoice"/>
+        <response name="error" type="view" value="NewSalesInvoice"/>
+    </request-map>
+    <request-map uri="FindArInvoices">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="FindArInvoices"/>
+    </request-map>
+    <request-map uri="NewSalesInvoice">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="NewSalesInvoice"/>
+    </request-map>
+    <request-map uri="FindArPaymentGroups">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="FindArPaymentGroups"/>
+    </request-map>
+    <request-map uri="massChangePaymentStatus">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="massChangePaymentStatus"/>
+        <response name="success" type="view" value="BatchPayments"/>
+        <response name="error" type="view" value="BatchPayments"/>
+    </request-map>
+    <request-map uri="massChangeInvoiceStatus">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="massChangeInvoiceStatus"/>
+        <response name="success" type="view" value="FindArInvoices"/>
+        <response name="error" type="view" value="FindArInvoices"/>
+    </request-map>
+    <request-map uri="cancelPaymentGroup">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="cancelPaymentBatch"/>
+        <response name="success" type="view" value="PaymentGroupOverview"/>
+        <response name="error" type="view" value="FindArPaymentGroups"/>
+    </request-map>
+
+    <request-map uri="newCommande">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="fromsNewCommande"/>
+    </request-map>
+    <request-map uri="listCommande">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="listCommande"/>
+    </request-map>
+    <request-map uri="createCommande">
+        <security https="true" auth="true"/>
+         <event type="service" invoke="createPurchaseOrder"/>
+        <response name="success" type="view" value="listCommande"/>
+    </request-map>
+    <request-map uri="commandeOverview">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="viewCommande"/>
+    </request-map>
+    <request-map uri="editCommande">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="updatePurchase"/>
+        <response name="success" type="view" value="editCommande"/>
+    </request-map>
+    <request-map uri="validation">
+        <security https="true" auth="true"/>
+        <event type="java" path="org.apache.ofbiz.accounting.purchase.purchaseEvents" invoke="validationOrder"/>
+        <response name="success" type="view" value="viewCommande"/>
+    </request-map>
+    <request-map uri="rejet">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="rejet"/>
+        <response name="success" type="view" value="viewCommande"/>
+    </request-map>
+    <request-map uri="listNotificationCommande">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="listNotificationCommande"/>
+    </request-map>
+    <request-map uri="notificationOverview">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="notificationOverview"/>
+    </request-map>
+    <request-map uri="rejetNotification">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="rejetNotification"/>
+        <response name="success" type="view" value="notificationOverview"/>
+    </request-map>
+
+    <request-map uri="validationNotificationCommande">
+        <security https="true" auth="true"/>
+        <event type="java" path="org.apache.ofbiz.accounting.purchase.purchaseEvents" invoke="validationOrder"/>
+        <response name="success" type="view" value="notificationOverview"/>
+    </request-map>
+    <request-map uri="listPayement">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="listPayement"/>
+    </request-map>
+    <request-map uri="payementOverview">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="payementOverview"/>
+    </request-map>
+    <request-map uri="validationPayement">
+        <security https="true" auth="true"/>
+        <event type="java" path="org.apache.ofbiz.accounting.purchase.purchaseEvents" invoke="validationOrder"/>
+        <response name="success" type="view" value="payementOverview"/>
+    </request-map>
+    <request-map uri="rejetPayement">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="rejetPayement"/>
+        <response name="success" type="view" value="payementOverview"/>
+    </request-map>
+    <request-map uri="listAutorisationLivraison">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="listAutorisationLivraison"/>
+    </request-map>
+    <request-map uri="validationAutorisationLivraison">
+        <security https="true" auth="true"/>
+        <event type="java" path="org.apache.ofbiz.accounting.purchase.purchaseEvents" invoke="validationOrder"/>
+        <response name="success" type="view" value="autorisationLivraisonOverview"/>
+    </request-map>
+    <request-map uri="rejetAutorisationLivraison">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="rejetAutorisationLivraison"/>
+        <response name="success" type="view" value="autorisationLivraisonOverview"/>
+    </request-map>
+    <request-map uri="autorisationLivraisonOverview">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="autorisationLivraisonOverview"/>
+    </request-map>
+    <request-map uri="listTicketDePese">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="listTicketDePese"/>
+    </request-map>
+    <request-map uri="ticketDePeseOverview">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="ticketDePeseOverview"/>
+    </request-map>
+    <request-map uri="validationTicketDePese">
+        <security https="true" auth="true"/>
+        <event type="java" path="org.apache.ofbiz.accounting.purchase.purchaseEvents" invoke="validationOrder"/>
+        <response name="success" type="view" value="ticketDePeseOverview"/>
+    </request-map>
+    <request-map uri="rejetTicketDePese">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="rejetTicket"/>
+        <response name="success" type="view" value="ticketDePeseOverview"/>
+    </request-map>
+    <request-map uri="checkOrder">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="checkOrder"/>
+    </request-map>
+
+<!--    customer route-->
+    <request-map uri="findCustomers">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="FindCustomers"/>
+    </request-map>
+
+    <request-map uri="CustomerProfile">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="CustomerProfile" save-home-view="true"/>
+    </request-map>
+
+    <request-map uri="NewCustomer">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="NewCustomer"/>
+    </request-map>
+
+    <request-map uri="createCustomer">
+        <security https="true" auth="true"/>
+        <event type="simple" path="component://order/minilang/customer/CustomerEvents.xml" invoke="createCustomer"/>
+        <response name="success" type="request-redirect" value="CustomerProfile">
+            <redirect-parameter name="partyId"/>
+        </response>
+        <response name="error" type="view" value="NewCustomer"/>
+    </request-map>
+    <request-map uri="addListCustomer">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="addListCustomer"/>
+        <response name="success" type="view" value="NewCustomer"/>
+    </request-map>
+
+    <!-- end of request mappings -->
+
+    <!-- View Mappings -->
+    <view-map name="main" type="screen" page="component://accounting/widget/ar/CommonScreens.xml#main"/>
+    <view-map name="ListReports" type="screen" page="component://accounting/widget/ar/InvoiceScreens.xml#ListReports"/>
+    <view-map name="FindPayments" type="screen" page="component://accounting/widget/ar/ArPaymentScreens.xml#FindPayments"/>
+    <view-map name="BatchPayments" type="screen" page="component://accounting/widget/ar/ArPaymentScreens.xml#BatchPayments"/>
+    <view-map name="FindArPaymentGroups" type="screen" page="component://accounting/widget/ar/ArPaymentScreens.xml#FindArPaymentGroups"/>
+    <view-map name="NewIncomingPayment" type="screen" page="component://accounting/widget/ar/ArPaymentScreens.xml#NewIncomingPayment"/>
+    <view-map name="FindArInvoices" type="screen" page="component://accounting/widget/ar/InvoiceScreens.xml#FindArInvoices"/>
+    <view-map name="NewSalesInvoice" type="screen" page="component://accounting/widget/ar/InvoiceScreens.xml#NewSalesInvoice"/>
+
+    <view-map name="LookupInvoice" type="screen" page="component://accounting/widget/ar/LookupScreens.xml#LookupInvoice"/>
+    <view-map name="LookupPayment" type="screen" page="component://accounting/widget/ar/LookupScreens.xml#LookupPayment"/>
+
+
+    <view-map name="fromsNewCommande" type="screen" page="component://accounting/widget/ar/PurchaseScreens.xml#fromsNewCommande"/>
+    <view-map name="listCommande" type="screen" page="component://accounting/widget/ar/PurchaseScreens.xml#listCommande"/>
+    <view-map name="viewCommande" type="screen" page="component://accounting/widget/ar/PurchaseScreens.xml#viewCommande"/>
+    <view-map name="editCommande" type="screen" page="component://accounting/widget/ar/PurchaseScreens.xml#editCommande"/>
+    <view-map name="listNotificationCommande" type="screen" page="component://accounting/widget/ar/PurchaseScreens.xml#listNotificationCommande"/>
+    <view-map name="notificationOverview" type="screen" page="component://accounting/widget/ar/PurchaseScreens.xml#notificationOverview"/>
+    <view-map name="listPayement" type="screen" page="component://accounting/widget/ar/PurchaseScreens.xml#listPayement"/>
+    <view-map name="payementOverview" type="screen" page="component://accounting/widget/ar/PurchaseScreens.xml#payementOverview"/>
+    <view-map name="listAutorisationLivraison" type="screen" page="component://accounting/widget/ar/PurchaseScreens.xml#listLivraison"/>
+    <view-map name="autorisationLivraisonOverview" type="screen" page="component://accounting/widget/ar/PurchaseScreens.xml#livraisonOverview"/>
+    <view-map name="listTicketDePese" type="screen" page="component://accounting/widget/ar/PurchaseScreens.xml#listTicketDePese"/>
+    <view-map name="ticketDePeseOverview" type="screen" page="component://accounting/widget/ar/PurchaseScreens.xml#ticketDePeseOverview"/>
+    <view-map name="checkOrder" type="screen" page="component://accounting/widget/ar/PurchaseScreens.xml#checkOrder"/>
+
+<!--    view customer-->
+    <view-map name="FindCustomers" type="screen" page="component://accounting/widget/ar/CustomerScreens.xml#FindCustomers"/>
+    <view-map name="CustomerProfile" type="screen" page="component://accounting/widget/ar/CustomerScreens.xml#CustomerProfile"/>
+    <view-map name="NewCustomer" type="screen" page="component://accounting/widget/ar/CustomerScreens.xml#NewCustomer"/>
+
+    <!-- end of view mappings -->
+</site-conf>

@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+<screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://ofbiz.apache.org/Widget-Screen" xsi:schemaLocation="http://ofbiz.apache.org/Widget-Screen http://ofbiz.apache.org/dtds/widget-screen.xsd">
+
+    <screen name="main">
+        <section>
+            <actions>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="Achats-VentesUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="headerItem" value="preCommande"/>
+                <script location="component://Achats-Ventes/groovyScripts/listCommande.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="Achats-VentesCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://Achats-Ventes/webapp/crud/listCommande.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="fromsNewCommande">
+        <section>
+            <actions>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="Achats-VentesUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="headerItem" value="preCommande"/>
+                <script location="component://Achats-Ventes/groovyScripts/addCommande.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="Achats-VentesCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://Achats-Ventes/webapp/crud/addCommande.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="listCommande">
+        <section>
+            <actions>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="Achats-VentesUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="headerItem" value="preCommande"/>
+                <script location="component://Achats-Ventes/groovyScripts/listCommande.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="Achats-VentesCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://Achats-Ventes/webapp/crud/listCommande.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="viewCommande">
+        <section>
+            <actions>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="Achats-VentesUiLabels" map-name="uiLabelMap" global="true"/>
+
+                <set field="headerItem" value="preCommande"/>
+                <script location="component://Achats-Ventes/groovyScripts/viewCommande.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="Achats-VentesCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://Achats-Ventes/webapp/crud/viewCommande.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="editCommande">
+        <section>
+            <actions>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="Achats-VentesUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="headerItem" value="preCommande"/>
+                <script location="component://Achats-Ventes/groovyScripts/viewCommande.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific>
+                    <html><html-template location="component://Achats-Ventes/webapp/crud/editCommande.ftl"/></html>
+                </platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="listNotificationCommande">
+        <section>
+            <actions>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="Achats-VentesUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="headerItem" value="notificationCommande"/>
+                <script location="component://Achats-Ventes/groovyScripts/listNotificationCommande.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="Achats-VentesCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://Achats-Ventes/webapp/crud/listNotification.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="notificationOverview">
+        <section>
+            <actions>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="Achats-VentesUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="headerItem" value="notificationCommande"/>
+
+                <script location="component://Achats-Ventes/groovyScripts/notificationOverview.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="Achats-VentesCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://Achats-Ventes/webapp/crud/notificationOverview.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="listPayement">
+        <section>
+            <actions>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="Achats-VentesUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="headerItem" value="authentifationVersement"/>
+
+                <script location="component://Achats-Ventes/groovyScripts/listPayement.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="Achats-VentesCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://Achats-Ventes/webapp/crud/listPayement.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="payementOverview">
+        <section>
+            <actions>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="Achats-VentesUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="headerItem" value="authentifationVersement"/>
+
+                <script location="component://Achats-Ventes/groovyScripts/payementOverview.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="Achats-VentesCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://Achats-Ventes/webapp/crud/payementOverview.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="listLivraison">
+        <section>
+            <actions>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="Achats-VentesUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="headerItem" value="autorisationLivraison"/>
+                <script location="component://Achats-Ventes/groovyScripts/listLivraison.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="Achats-VentesCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://Achats-Ventes/webapp/crud/listLivraison.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="livraisonOverview">
+        <section>
+            <actions>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="Achats-VentesUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="headerItem" value="autorisationLivraison"/>
+
+                <script location="component://Achats-Ventes/groovyScripts/livraisonOverview.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="Achats-VentesCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://Achats-Ventes/webapp/crud/livraisonOverview.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="listTicketDePese">
+        <section>
+            <actions>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="Achats-VentesUiLabels" map-name="uiLabelMap" global="true"/>
+
+                <set field="tabButtonItem" value="ticketDePesee"/>
+                <set field="headerItem" value="ticketDePesee"/>
+                <script location="component://Achats-Ventes/groovyScripts/listTicketDePese.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="Achats-VentesCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://Achats-Ventes/webapp/crud/listTicketDePese.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="ticketDePeseOverview">
+        <section>
+            <actions>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="Achats-VentesUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="headerItem" value="ticketDePesee"/>
+
+                <script location="component://Achats-Ventes/groovyScripts/ticketDePeseOverview.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="Achats-VentesCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://Achats-Ventes/webapp/crud/ticketDePeseOverview.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="checkOrder">
+        <section>
+            <actions>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="Achats-VentesUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="headerItem" value="checkOrder"/>
+                <script location="component://Achats-Ventes/groovyScripts/checkOrder.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="Achats-VentesCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://Achats-Ventes/webapp/crud/checkOrder.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+</screens>
